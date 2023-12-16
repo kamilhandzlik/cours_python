@@ -340,3 +340,210 @@
 
 # print(break_num)
 ##-----------------------------------------------------------
+
+
+##ZADANIE 18
+#start_num = 500 #provide some start number
+#end_num = 100 #provide some end number that you stop when you hit
+#count_by = 2 #provide some number to count by
+#break_num = start_num
+#result = ()
+## write a while loop that uses break_num as the ongoing number to
+##   check against end_num
+#if start_num > end_num:
+#    result = "Oops! Looks like your start value is greater than the end value. Please try again."
+#else:
+#    break_num = start_num
+#    while break_num < end_num:
+#        break_num += count_by
+#    result = break_num
+#print(result)
+##------------------------------------------------------------------------
+
+
+
+##ZADANIE 19
+#limit = 40
+#number = 0
+#nearest_square = 1
+## write your while loop here
+#while (number+1)**2 < limit:
+#    number += 1
+#    #square = number**2
+#    nearest_square = number**2
+
+#print(nearest_square)
+##---------------------------------------------------------------------------
+
+
+##ZADANIE 20
+
+#num_list = [422, 136, 524, 85, 96, 719, 85, 92, 10, 17, 312, 542, 87, 23, 86, 191, 116, 35, 173, 45, 149, 59, 84, 69, 113, 166]
+#count_odd = 0
+#list_sum = 0
+#i = 0
+#len_num_list = len(num_list)
+#while (count_odd < 5) and (i < len_num_list):
+#    if num_list[i] % 2 !=0:
+#        list_sum += num_list[i]
+#        count_odd += 1
+#    i += 1
+#print ("The numbers of odd numbers added are: {}".format(count_odd))
+#print ("The sum of the odd numbers added is: {}".format(list_sum))
+##------------------------------------------------------
+
+
+##ZADANIE 21
+#headlines = ["Local Bear Eaten by Man",
+#             "Legislature Announces New Laws",
+#             "Peasant Discovers Violence Inherent in System",
+#             "Cat Rescues Fireman Stuck in Tree",
+#             "Brave Knight Runs Away",
+#             "Papperbok Review: Totally Triffic"]
+
+#news_ticker = ""
+#for headline in headlines:
+#    news_ticker += headline + " "
+#    if len(news_ticker) >= 140:
+#        news_ticker = news_ticker[:140]
+#        break
+
+#print(news_ticker)
+##-------------------------------------------------------------
+
+
+##ZADANIE 22
+## Your code should check if each number in the list is a prime number
+#check_prime = [26, 39, 51, 53, 57, 79, 85]
+
+## write your code here
+## HINT: You can use the modulo operator to find a factor
+
+#for prime in check_prime:
+#    if prime % 2 != 0 and prime % 3 != 0 and prime % 5 != 0 and prime % 7 != 0:
+#        print("{} isa prime number".format(prime))
+#    else:
+#        print('is NOT a prime number because 2 is factor of {}'.format(prime))
+##-------------------------------------------------------------
+
+
+##ZADANIE 23
+#x_coord = [23, 53, 2, -12, 95, 103, 14, -5]
+#y_coord = [677, 233, 405, 433, 905, 376, 432, 445]
+#z_coord = [4, 16, -6, -42, 3, -6, 23, -1]
+#labels = ["F", "J", "A", "Q", "Y", "B", "W", "X"]
+
+#points = []
+# write your for loop here
+#for x_coord, y_coord, z_coord, labels in zip(x_coord, y_coord, z_coord, labels):
+#    points.append("point:{}, {}, {}, {}".format(x_coord, y_coord, z_coord, labels))
+
+#for point in points:
+#    print(point)
+
+##-------------------------------------------------------------------
+
+
+##ZADANIE 24
+
+## write your function here
+#def population_density(num_of_people, area):
+#    return num_of_people / area
+
+
+## test cases for your function
+#test1 = population_density(10, 1)
+#expected_result1 = 10
+#print("expected result: {}, actual result: {}".format(expected_result1, test1))
+
+#test2 = population_density(864816, 121.4)
+#expected_result2 = 7123.6902801
+#print("expected result: {}, actual result: {}".format(expected_result2, test2))
+
+##-----------------------------------------------------------------
+
+
+
+## ZADANIE 25
+
+## write your function here
+#def readable_timedelta(days):
+#    weeks = days // 7
+#    day_s = days % 7
+#    return "{} week(s) and {} day(s).".format(weeks, day_s)
+
+## test your function
+#print(readable_timedelta(10))
+##---------------------------------------------------------------------
+
+
+##ZADANIE 26
+
+#numbers = [
+#              [34, 63, 88, 71, 29],
+#              [90, 78, 51, 27, 45],
+#              [63, 37, 85, 46, 22],
+#              [51, 22, 34, 11, 18]
+#           ]
+
+#averages = lambda num_list :sum(num_list) / len(num_list)
+
+#def mean(num_list):
+#    return sum(num_list) / len(num_list)
+
+#averages = list(map(mean, numbers))
+#print(averages)
+##--------------------------------------------------------------------
+
+
+##ZADANIE 27
+
+#cities = ["New York City", "Los Angeles", "Chicago", "Mountain View", "Denver", "Boston"]
+
+#is_short = lambda name: len(name) < 10
+
+#def is_short(name):
+#   return len(name) < 10
+
+#short_cities = list(filter(is_short, cities))
+#print(short_cities)
+##---------------------------------------------------------------------
+
+
+## ZADANIE 28
+#how_many_snakes = 1
+#snake_string = """
+#Welcome to Python3!
+
+#             ____
+#            / . .\\
+#            \  ---<
+#             \  /
+#   __________/ /
+#-=:___________/
+
+#<3, Juno
+#"""
+
+
+#print(snake_string * how_many_snakes)
+##-------------------------------------------------------------------
+
+
+##ZADANIE 29
+
+#names = input('Enter names separated by commas: ').title().split(",") # get and process input for a list of names
+#assignments =  input('Enter assignment counts separated by commas: ').split(",")# get and process input for a list of the number of assignments
+#grades =  input('Enter grades separated by commas: ').split(",") # get and process input for a list of grades
+
+## message string to be used for each student
+## HINT: use .format() with this string in your for loop
+#message = ("Hi {},\n\nThis is a reminder that you have {} assignments left to \
+#submit before you can graduate. You're current grade is {} and can increase \
+#to {} if you submit all assignments before the due date.\n\n")
+
+## write a for loop that iterates through each set of names, assignments, and grades to print each student's message
+#for name, assignment, grade in zip(names, assignments, grades):
+#    print(message.format(name, assignment, grade, int(grade) +int(assignment)*2))
+##----------------------------------------------------------------------
+
