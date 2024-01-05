@@ -48,6 +48,9 @@
 # contain only alphabets (both uppercase and lowercase) and numeric digits.
 
 
+from ast import Index
+
+
 def duplicate_count(text):
     # Your code goes here
     count = 0
@@ -131,3 +134,68 @@ solution = (x > count)
 print(x)
 print(count)
 print(solution)
+
+#####################################################################################
+###############   ZADANIE 5      ####################################################
+#####################################################################################
+
+
+def is_isogram(string):
+    # your code
+    # Convert the string to lowercase to ignore letter case
+    string = string.lower()
+    
+    # Check if the length of the set of characters is equal to the length of the string
+    return len(set(string)) == len(string)
+
+# Examples:
+print(is_isogram("Dermatoglyphics"))  # Output: True
+print(is_isogram("aba"))  # Output: False
+print(is_isogram("moOse"))  # Output: False
+
+#####################################################################################
+###############   ZADANIE 6      ####################################################
+#####################################################################################
+
+
+
+def get_count(sentence):
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    count = 0
+
+    for letter in sentence.split(''):
+        for vowel in vowels:
+            if letter == vowel:
+                count += 1
+    return count
+
+
+#####################################################################################
+###############   ZADANIE 6      ####################################################
+#####################################################################################
+
+def solution(number):
+    if number < 0:
+        return 0  # Return 0 for negative numbers
+
+    count = 0
+    for j in range(number):
+        if j % 3 == 0 or j % 5 == 0:
+            count += j
+
+    return count
+# drugie rozwiązanie
+def solution(number):
+    return sum(i for i in range(number) if i % 3 == 0 or i % 5 == 0)
+  
+
+#####################################################################################
+###############   ZADANIE 6      ####################################################
+#####################################################################################
+
+
+def count_smileys(arr):
+    sf = ":;-~)D"
+    count = 0
+    if sf in arr:
+        count += 1/2
