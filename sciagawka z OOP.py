@@ -163,15 +163,13 @@ class Point:
         return self.lenght() < p.lenght()
  
     def __le__(self, p):                                    #mniejsze równe
-         return self.lenght() <= p.lenght()
+        return self.lenght() <= p.lenght()
                                                             #równe
     def __eq__(self, p):
-        pass  #WORK IN PROGRESS
-        # return self.lenght() == p.lenght() and p.lenght == self.lenght
-        
+       pass # return self.lenght() == p.lenght() 
 
     def __str__(self) -> str:                               # tametoda sprawia, że zamiast miejsca w pamięci printuje się obiekt
-        return "(" + str(self.x) + " , " + str(self.y) + ")"# nie dostajemy wówczas czegoś takiego:
+        return f"({str(self.x)}, {str(self.y)})"            # nie dostajemy wówczas czegoś takiego:
                                                             # <__main__.Point object at 0x0000019A9890BA10> <__main__.Point object at 0x0000019A9890BA9
                                                             # tylko ładny zapis
                                                             # (6 , 6) (-3 , -3) (3, 6)
@@ -186,7 +184,7 @@ p6 = p4 - p1
 p7 = p2 * p3
 
 print(p5, p6, p7)
-print(p1  > p2)
+print(p1 > p2)
 print(p7 == p6)
 
 
@@ -246,7 +244,7 @@ class NotPrivate:
         self.name = name
         self.priv = _Private(name)
 
-    def display(self):
+    def _display(self):
         print("hello")
 
     def display(self):

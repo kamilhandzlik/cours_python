@@ -199,3 +199,106 @@ def count_smileys(arr):
     count = 0
     if sf in arr:
         count += 1/2
+
+
+#####################################################################################
+###############   ZADANIE 7      ####################################################
+#####################################################################################
+
+
+
+def cakes(recipe, available):
+    number_of_cakes = float('inf')  # Set initially to positive infinity
+
+    for ingredient, amount_required in recipe.items():
+        if ingredient in available:
+            cakes_possible = available[ingredient] // amount_required
+            number_of_cakes = min(number_of_cakes, cakes_possible)
+        else:
+            return 0  # If any ingredient is missing, return 0 cakes
+
+    return number_of_cakes
+
+# Examples
+print(cakes({'flour': 500, 'sugar': 200, 'eggs': 1}, {'flour': 1200, 'sugar': 1200, 'eggs': 5, 'milk': 200}))
+# Output: 2
+
+print(cakes({'apples': 3, 'flour': 300, 'sugar': 150, 'milk': 100, 'oil': 100},
+            {'sugar': 500, 'flour': 2000, 'milk': 2000}))
+# Output: 0
+
+# Tutaj spróbuje zrobić list comprihension
+
+def cakes(recipe, available):
+    return min([available[ingredient] // amount_required if ingredient in available else 0 for ingredient, amount_required in recipe.items()], default=float('inf'))
+
+
+# Examples
+print(cakes({'flour': 500, 'sugar': 200, 'eggs': 1}, {'flour': 1200, 'sugar': 1200, 'eggs': 5, 'milk': 200}))
+# Output: 2
+
+print(cakes({'apples': 3, 'flour': 300, 'sugar': 150, 'milk': 100, 'oil': 100},
+            {'sugar': 500, 'flour': 2000, 'milk': 2000}))
+
+
+#####################################################################################
+###############   ZADANIE 8      ####################################################
+#####################################################################################
+
+# A Narcissistic Number (or Armstrong Number) is a positive number which is the sum of its own digits, each raised to the power of the number of digits in a given base. In this Kata, we will restrict ourselves to decimal (base 10).
+
+# For example, take 153 (3 digits), which is narcissistic:
+
+#     1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
+# and 1652 (4 digits), which isn't:
+
+#     1^4 + 6^4 + 5^4 + 2^4 = 1 + 1296 + 625 + 16 = 1938
+# The Challenge:
+
+# Your code must return true or false (not 'true' and 'false') depending upon whether the given number is a Narcissistic number in base 10.
+
+# This may be True and False in your language, e.g. PHP.
+
+# Error checking for text strings or other invalid inputs is not required, only valid positive non-zero integers will be passed into the function.
+
+
+
+
+def narcissistic(value):
+    num_digits = len(str(value))
+    narc_num = 0
+    temp_value = value
+
+    while temp_value > 0:
+        digit = temp_value % 10
+        narc_num += digit ** num_digits
+        temp_value //= 10
+
+    return narc_num == value
+
+# Test cases
+print(narcissistic(153))  # True
+print(narcissistic(1652))  # False
+
+
+#####################################################################################
+###############   ZADANIE 8      ####################################################
+#####################################################################################
+
+# The main idea is to count all the occurring characters in a string. If you have a string like aba, then the result should be {'a': 2, 'b': 1}.
+
+# What if the string is empty? Then the result should be empty object literal, {}.
+
+
+def count(s):
+    result = {}
+    for char in s:
+        if char in result:
+            result[char] += 1
+        else:
+            result[char] = 1
+    return result
+
+# Test case
+print(count('aba'))
+print(count(''))
