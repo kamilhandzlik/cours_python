@@ -430,4 +430,119 @@ print(greet())
 
 # Instrukcja print(greet()) wywołuje funkcję greet i drukuje uzyskany ciąg znaków.
 
-# Ogólnie rzecz biorąc, kod wydaje się być kreatywnym sposobem kodowania wiadomości przy użyciu ciągów binarnych i wyciągania konkretnych znaków na podstawie wcześniej zdefiniowanych pozycji. Funkcja binDropper służy do obsługi konwersji z binarnego na tekstowy i odwrotnie. Funkcja greet wykorzystuje te konwersje do stworzenia konkretnej zakodowanej wiadomości na podstawie wartości ASCII i pozycji.
+# Ogólnie rzecz biorąc, kod wydaje się być kreatywnym sposobem kodowania wiadomości przy użyciu ciągów binarnych i wyciągania konkretnych znaków na podstawie wcześniej zdefiniowanych pozycji. Funkcja binDropper służy do obsługi
+
+# konwersji z binarnego na tekstowy i odwrotnie. Funkcja greet wykorzystuje te konwersje do stworzenia konkretnej zakodowanej wiadomości na podstawie wartości ASCII i pozycji.
+
+
+
+
+#####################################################################################
+###############   ZADANIE 12      ####################################################
+#####################################################################################
+
+# sposób 1 nie do końca poprawny ponieważ nie działa na 3
+from math import sqrt
+def is_square(n):    
+    is_sq = False
+    # sprawdza czy pierwiastek drugiego stopnia jest intigerem tylko, że bardzo łopatologicznie
+    if n < 0:
+        is_sq = 'Negative numbers cannot be square numbers'
+    elif sqrt(n) is not float:
+        is_sq = True
+    else:
+        is_sq = False
+    return is_sq
+
+print(is_square(3))
+
+#Sposób 2 ten już działa perfekcyjnie na wszystko
+
+import math
+
+def is_square(n):
+    # sprawdza czy pierwiastek drugiego stopnia jest intigerem
+    return n > 0 and math.isqrt(n)**2 == n
+
+
+#####################################################################################
+###############   ZADANIE 13      ####################################################
+#####################################################################################
+# Write two functions that convert a roman numeral to and from an integer value. Multiple roman numeral values will be tested for each function.
+
+# Modern Roman numerals are written by expressing each digit separately starting with the left most digit and skipping any digit with a value of zero.
+#  In Roman numerals 1990 is rendered: 1000=M, 900=CM, 90=XC; resulting in MCMXC. 2008 is written as 2000=MM, 8=VIII; or MMVIII. 1666 uses each Roman symbol in descending order: MDCLXVI.
+
+# Input range : 1 <= n < 4000
+
+# In this kata 4 should be represented as IV, NOT as IIII (the "watchmaker's four").
+
+
+
+
+
+class RomanNumerals:
+    @staticmethod
+    def to_roman(val: int) -> str:
+        roman_numerals = [
+            ("M", 1000),
+            ("CM", 900),
+            ("D", 500),
+            ("CD", 400),
+            ("C", 100),
+            ("XC", 90),
+            ("L", 50),
+            ("XL", 40),
+            ("X", 10),
+            ("IX", 9),
+            ("V", 5),
+            ("IV", 4),
+            ("I", 1)
+        ]
+
+        result = ""
+        for numeral, value in roman_numerals:
+            while val >= value:
+                result += numeral
+                val -= value
+
+        return result
+
+    @staticmethod
+    def from_roman(roman_num: str) -> int:
+        roman_dict = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+        result = 0
+
+        for i in range(len(roman_num)):
+            if i > 0 and roman_dict[roman_num[i]] > roman_dict[roman_num[i - 1]]:
+                result += roman_dict[roman_num[i]] - 2 * roman_dict[roman_num[i - 1]]
+            else:
+                result += roman_dict[roman_num[i]]
+
+        return result
+
+# Examples
+print(RomanNumerals.to_roman(1990))  # Expected output: 'MCMXC'
+print(RomanNumerals.to_roman(2008))  # Expected output: 'MMVIII'
+print(RomanNumerals.from_roman('MCMXC'))  # Expected output: 1990
+print(RomanNumerals.from_roman('MMVIII'))  # Expected output: 2008
+
+
+# to_roman(val: int) -> str:
+
+# to_roman przyjmuje liczbę całkowitą val i zamienia ją na reprezentację liczby rzymskiej. Do tego celu używa listy
+#  krotek roman_numerals, gdzie każda krotka zawiera parę: rzymski numeral (np. "M", "CM", "D") oraz odpowiadająca mu wartość liczby.
+
+# Następnie, korzystając z pętli for, przechodzi przez listę roman_numerals od największego rzymskiego numerala do najmniejszego.
+#  W każdym kroku sprawdza, ile razy można odjąć daną wartość od val, dodaje odpowiadający rzymski numeral do wyniku i odejmuje odpowiednią ilość od val.
+# Proces ten powtarza się do momentu, gdy val staje się równy 0.
+
+# Ostatecznie zwraca zbudowany rzymski numeral jako string.
+
+# from_roman(roman_num: str) -> int:
+
+# from_roman przyjmuje rzymski numeral jako string roman_num i zamienia go na liczbę całkowitą. W tym celu korzysta z mapy roman_dict, gdzie każdemu rzymskiemu numeralowi przypisana jest jego wartość liczby.
+
+# Następnie przechodzi przez każdy znak rzymskiego numerala używając pętli for. Jeżeli wartość liczby odpowiadającej aktualnemu znakowi jest większa niż wartość liczby odpowiadającej poprzedniemu znakowi, to odejmuje dwukrotność wartości poprzedniego znaku (uwzględniając notację odjęcia) od wyniku. W przeciwnym razie dodaje wartość liczby odpowiadającej aktualnemu znakowi do wyniku.
+
+# Ostatecznie zwraca uzyskaną liczbę całkowitą.
