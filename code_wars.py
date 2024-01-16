@@ -2,43 +2,43 @@
 ###############   ZADANIE 1      ####################################################
 #####################################################################################
 
-# # from preloaded import MORSE_CODE
+# from preloaded import MORSE_CODE
 
-# MORSE_CODE = {'A': '.-', 'B': '-...',
-#                    'C': '-.-.', 'D': '-..', 'E': '.',
-#                    'F': '..-.', 'G': '--.', 'H': '....',
-#                    'I': '..', 'J': '.---', 'K': '-.-',
-#                    'L': '.-..', 'M': '--', 'N': '-.',
-#                    'O': '---', 'P': '.--.', 'Q': '--.-',
-#                    'R': '.-.', 'S': '...', 'T': '-',
-#                    'U': '..-', 'V': '...-', 'W': '.--',
-#                    'X': '-..-', 'Y': '-.--', 'Z': '--..',
-#                    '1': '.----', '2': '..---', '3': '...--',
-#                    '4': '....-', '5': '.....', '6': '-....',
-#                    '7': '--...', '8': '---..', '9': '----.',
-#                    '0': '-----', ',': '--..--', '.': '.-.-.-',
-#                    '?': '..--..', '/': '-..-.', '-': '-....-',
-#                    '(': '-.--.', ')': '-.--.-', ' ': '/'}
-
-
-# def decode_morse(morse_code):
-#     morse_code = morse_code.strip()  # Remove leading and trailing whitespaces
-#     morse_words = morse_code.split('   ')  # Split the Morse code into words
-
-#     decoded_words = []
-#     for word in morse_words:
-#         morse_chars = word.split(' ')  # Split the Morse word into characters
-#         decoded_word = ''.join([key for char in morse_chars for key, value in MORSE_CODE.items() if value == char])
-#         decoded_words.append(decoded_word)
-
-#     decoded_sentence = ' '.join(decoded_words)
-#     return decoded_sentence
+MORSE_CODE = {'A': '.-', 'B': '-...',
+                   'C': '-.-.', 'D': '-..', 'E': '.',
+                   'F': '..-.', 'G': '--.', 'H': '....',
+                   'I': '..', 'J': '.---', 'K': '-.-',
+                   'L': '.-..', 'M': '--', 'N': '-.',
+                   'O': '---', 'P': '.--.', 'Q': '--.-',
+                   'R': '.-.', 'S': '...', 'T': '-',
+                   'U': '..-', 'V': '...-', 'W': '.--',
+                   'X': '-..-', 'Y': '-.--', 'Z': '--..',
+                   '1': '.----', '2': '..---', '3': '...--',
+                   '4': '....-', '5': '.....', '6': '-....',
+                   '7': '--...', '8': '---..', '9': '----.',
+                   '0': '-----', ',': '--..--', '.': '.-.-.-',
+                   '?': '..--..', '/': '-..-.', '-': '-....-',
+                   '(': '-.--.', ')': '-.--.-', ' ': '/'}
 
 
-# # Example usage:
-# morse_code_input = "... --- ..."
-# decoded_string = decode_morse(morse_code_input)
-# print(decoded_string)
+def decode_morse(morse_code):
+    morse_code = morse_code.strip()  # Remove leading and trailing whitespaces
+    morse_words = morse_code.split('   ')  # Split the Morse code into words
+
+    decoded_words = []
+    for word in morse_words:
+        morse_chars = word.split(' ')  # Split the Morse word into characters
+        decoded_word = ''.join([key for char in morse_chars for key, value in MORSE_CODE.items() if value == char])
+        decoded_words.append(decoded_word)
+
+    decoded_sentence = ' '.join(decoded_words)
+    return decoded_sentence
+
+
+# Example usage:
+morse_code_input = "... --- ..."
+decoded_string = decode_morse(morse_code_input)
+print(decoded_string)
 
 #####################################################################################
 ###############   ZADANIE 2      ####################################################
@@ -546,3 +546,85 @@ print(RomanNumerals.from_roman('MMVIII'))  # Expected output: 2008
 # Następnie przechodzi przez każdy znak rzymskiego numerala używając pętli for. Jeżeli wartość liczby odpowiadającej aktualnemu znakowi jest większa niż wartość liczby odpowiadającej poprzedniemu znakowi, to odejmuje dwukrotność wartości poprzedniego znaku (uwzględniając notację odjęcia) od wyniku. W przeciwnym razie dodaje wartość liczby odpowiadającej aktualnemu znakowi do wyniku.
 
 # Ostatecznie zwraca uzyskaną liczbę całkowitą.
+
+
+#####################################################################################
+###############   ZADANIE 14      ###################################################
+#####################################################################################
+"""You probably know the "like" system from Facebook and other pages. People can "like" blog posts, pictures or other items. We want to create the text that should be displayed next to such an item.
+
+Implement the function which takes an array containing the names of people that like an item. It must return the display text as shown in the examples:
+
+[]                                -->  "no one likes this"
+["Peter"]                         -->  "Peter likes this"
+["Jacob", "Alex"]                 -->  "Jacob and Alex like this"
+["Max", "John", "Mark"]           -->  "Max, John and Mark like this"
+["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
+Note: For 4 or more names, the number in "and 2 others" simply increases."""
+
+#rozwiązanie 1 - to działa w wersji konsolowej
+def likes(names):
+    if len(names) == 0:
+        print("no one likes this")
+    elif len(names) == 1:
+        print(f"{names[0]} likes this")
+    elif len(names) == 2:
+        print(f"{names[0]} and {names[1]} like this")
+    elif len(names) == 3:
+        print(f"{names[0]}, {names[1]}, and {names[2]} like this")
+    else:
+        print(f"{names[0]}, {names[1]}, and {len(names) - 2} others like this")
+
+#rozwiązanie 2 - to działa tak żebby zaliczyć katę na codewars
+def likes(names):
+    if len(names) == 0:
+        return "no one likes this"
+    elif len(names) == 1:
+        return f"{names[0]} likes this"
+    elif len(names) == 2:
+        return f"{names[0]} and {names[1]} like this"
+    elif len(names) == 3:
+        return f"{names[0]}, {names[1]} and {names[2]} like this"
+    else:
+        return f"{names[0]}, {names[1]} and {len(names) - 2} others like this"
+
+
+# Example usage:
+likes(["Alice"])
+likes(["Bob", "Charlie"])
+likes(["Dave", "Eve", "Frank"])
+likes(["Grace", "Hank", "Ivy", "Jack"])
+
+
+
+#####################################################################################
+###############   ZADANIE 15      ###################################################
+#####################################################################################
+
+"""Given an array of integers, find the one that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times.
+
+Examples
+[7] should return 7, because it occurs 1 time (which is odd).
+[0] should return 0, because it occurs 1 time (which is odd).
+[1,1,2] should return 2, because it occurs 1 time (which is odd).
+[0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+[1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd)."""
+
+
+def find_it(seq):
+    for num in seq:
+        if seq.count(num) % 2 != 0:
+            return num
+
+# Examples
+print(find_it([7]))  # Output: 7
+print(find_it([0]))  # Output: 0
+print(find_it([1, 1, 2]))  # Output: 2
+print(find_it([0, 1, 0, 1, 0]))  # Output: 0
+print(find_it([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]))  # Output: 4
+
+# This find_it function iterates through each element in the input sequence (seq) and checks
+# if the count of that element in the sequence is odd. If so, it returns that element. This way, it
+#  finds the integer that appears an odd number of times in the given array.
