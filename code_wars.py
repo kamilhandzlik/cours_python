@@ -628,3 +628,67 @@ print(find_it([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]))  # Output: 4
 # This find_it function iterates through each element in the input sequence (seq) and checks
 # if the count of that element in the sequence is odd. If so, it returns that element. This way, it
 #  finds the integer that appears an odd number of times in the given array.
+
+
+#####################################################################################
+###############   ZADANIE 16      ###################################################
+#####################################################################################
+"""Turn boolean to string"""
+
+def boolean_to_string(b):
+    return str(b)
+
+#####################################################################################
+###############   ZADANIE 17      ###################################################
+#####################################################################################
+
+"""Timmy & Sarah think they are in love, but around where they live, they will only know once they pick a flower each. If one of the flower
+s has an even number of petals and the other has an odd number of petals it means they are in love.
+Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't."""
+
+#Rozwiązanie 1
+def lovefunc( flower1, flower2 ):
+    if flower1 % 2 == 0 and flower2 % 2 == 0 or (flower1 % 2 != 0 and flower2 % 2 != 0):
+        return False
+    elif (flower1 % 2 != 0 and flower2 % 2 == 0) or (flower1 % 2 == 0 and flower2 % 2 != 0):
+        return True
+    
+#Rozwiązaanie 2
+def lovefunc(flower1, flower2):
+    # Check if one flower has even petals and the other has odd petals
+    if (flower1 % 2 == 0 and flower2 % 2 != 0) or (flower1 % 2 != 0 and flower2 % 2 == 0):
+        return True  # They are in love
+    else:
+        return False  # They aren't in love
+#Rozwiązanie 3
+def lovefunc(f1, f2):
+    return True if (f1 % 2 == 0 and f2 % 2 != 0) or (f2 % 2 == 0 and f1 % 2 != 0) else False
+#Rozwiązanie 4 
+def lovefunc( flower1, flower2 ):
+    return (flower1+flower2)%2
+
+#####################################################################################
+###############   ZADANIE 18      ###################################################
+#####################################################################################
+"""Nathan loves cycling.
+
+Because Nathan knows it is important to stay hydrated, he drinks 0.5 litres of water per hour of cycling.
+
+You get given the time in hours and you need to return the number of litres Nathan will drink, rounded to the smallest value.
+
+For example:"""
+
+def litres(time):
+    return time // 2
+
+#####################################################################################
+###############   ZADANIE 19      ###################################################
+#####################################################################################
+"""We need a function that can transform a number (integer) into a string.
+
+What ways of achieving this do you know?
+
+Examples (input --> output):"""
+def number_to_string(num):
+    return str(num)
+
