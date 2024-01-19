@@ -1,16 +1,15 @@
 from lista_biurek_do_CoWork import desks_instances
-
-
-def show_desks():
-    desk_index = 0
-    for desk in desks_instances:
-        print(desk + " [" + str(desk_index) + "]")
-        desk_index += 1
+from CoWork_klasy import *
+from pprint import pprint
 
 
 def add_desk():
-    desk = input("Dodaj biurko: ")
-    desks_instances.append(desk)
+    desk_type = input("Podaj typ biurka: ")
+    price = float(input("Podaj cenę biurka PLN/h: "))
+    status = input("Podaj status biurka: ")
+
+    new_desk = Desks(desk_type, price, status)
+    desks_instances.append(new_desk)
     print("Dodano biurko!")
 
 
@@ -26,10 +25,10 @@ def delete_desk():
 
 
 def save_tasks_to_file():
-    file = open("tasks.txt", "w")
-    for desk in desks_instances:
-        file.write(desk + "/n")
-    file.close()
+    with open("desks.json", "w") as file:
+        for desk in desks_instances:
+            file.write(f"{desk.desk_type}, {desk.price}, {desk.status}\n")
+    print("Zapisano biurka do pliku.")
 
 
 def customer_board():
@@ -43,6 +42,7 @@ def customer_board():
             print("1. NASZA OFERTA")
         elif user_choice == "2":
             print("2. SZCZEGÓŁOWE SPECYFIKACJE ORAZ CENNIK USŁUG")
+            pprint(desks_instances)
         elif user_choice == "3":
             print("3. DOSTĘPNOŚĆ BIUREK/STANOWISK")
         elif user_choice == "4":
@@ -65,11 +65,17 @@ def admin_board():
         user_choice = input("Wybierz opcję wybierając odpowiednią cyfrę:")
 
         if user_choice == "1":
-            print(desks_instances)
+            print("1. LISTA REZERWACJI I DANE SUMARYCZNE")
+            pprint(desks_instances)
+
         elif user_choice == "2":
+            print("2. DODWANIE BIURKA/STANOWISKA")
             add_desk()
+
         elif user_choice == "3":
             print("3. USUWANIE BIURKA/STANOWISKA")
+            delete_desk()
+
         elif user_choice == "4":
             print("4. ANULOWANIE REZERWACJI")
         elif user_choice == "5":
@@ -105,29 +111,29 @@ def print_menu_admin():
 
 
 def main_menu():
-    user_input = -1
+    user_choice = ""
 
-    while user_input != "3":
-        if user_input == "1":
+    while user_choice != "3":
+        if user_choice == "1":
             print("Panel Klienta")
             print("Zalogowałeś się do panelu klienta")
 
             customer_board()
 
-        elif user_input == "2":
+        elif user_choice == "2":
             print("PANEL ADMINISTRATORA ")
             print("Zalogowałeś się do panelu administratora")
 
             admin_board()
 
         else:
-            print(f"Przepraszam, wybrałeś {user_input}, nie jest to poprawny wybór")
+            print(f"Przepraszam, wybrałeś {user_choice}, nie jest to poprawny wybór")
 
         print("1. Zaloguj się jako klienta")
         print("2. Zaloguj się jako administratora ")
         print("3. WYJŚCIE Z APLIKACJI")
 
-        user_input = input("Wybierz panel do którego chcesz się zalogować: ")
+        user_choice = input("Wybierz panel do którego chcesz się zalogować: ")
 
 
 if __name__ == "__main__":

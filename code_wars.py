@@ -692,3 +692,70 @@ Examples (input --> output):"""
 def number_to_string(num):
     return str(num)
 
+#####################################################################################
+###############   ZADANIE 20      ###################################################
+#####################################################################################
+"""Your task in order to complete this Kata is to write a function which formats a duration, given as a number of seconds, in a human-friendly way.
+
+The function must accept a non-negative integer. If it is zero, it just returns "now". Otherwise, the duration is expressed as a combination of years, days, hours, minutes and seconds."""
+#rozwiązanie 1
+def format_duration(seconds):
+    if seconds == 0:
+        return "now"
+
+    years, seconds = divmod(seconds, 31536000)
+    days, seconds = divmod(seconds, 86400)
+    hours, seconds = divmod(seconds, 3600)
+    minutes, seconds = divmod(seconds, 60)
+
+    time_units = [("year", years), ("day", days), ("hour", hours), ("minute", minutes), ("second", seconds)]
+    result = []
+
+    for unit, value in time_units:
+        if value == 1:
+            result.append(f"{value} {unit}")
+        elif value > 1:
+            result.append(f"{value} {unit}s")
+
+    return ', '.join(result[:-1]) + ' and ' + result[-1] if len(result) > 1 else result[0]
+
+# Example usage:
+print(format_duration(3662))  # Output: "1 hour, 1 minute and 2 seconds"
+print(format_duration(0))     # Output: "now"
+
+"""This code takes a number of seconds as input and converts it into a human-readable format, expressing the duration in years, days,
+ hours, minutes, and seconds. The function handles singular and plural forms appropriately and returns the formatted string."""
+
+
+#Rozwiązanie 2
+
+times = [("year", 365 * 24 * 60 * 60), 
+         ("day", 24 * 60 * 60),
+         ("hour", 60 * 60),
+         ("minute", 60),
+         ("second", 1)]
+
+def format_duration(seconds):
+
+    if not seconds:
+        return "now"
+
+    chunks = []
+    for name, secs in times:
+        qty = seconds // secs
+        if qty:
+            if qty > 1:
+                name += "s"
+            chunks.append(str(qty) + " " + name)
+
+        seconds = seconds % secs
+
+    return ', '.join(chunks[:-1]) + ' and ' + chunks[-1] if len(chunks) > 1 else chunks[0]
+
+#####################################################################################
+###############   ZADANIE 21      ###################################################
+#####################################################################################
+
+
+
+
