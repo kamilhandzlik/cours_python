@@ -1,15 +1,21 @@
-from lista_biurek_do_CoWork import desks_instances
 from CoWork_klasy import *
 from pprint import pprint
 
 
+def show_admin_desks_view():
+    print("Admin Desks View:")
+    for keys, values in desks_instances.items():
+        print(keys, values)
+
+
 def add_desk():
+    name = input("Podaj nazwę biurka: ")
     desk_type = input("Podaj typ biurka: ")
     price = float(input("Podaj cenę biurka PLN/h: "))
     status = input("Podaj status biurka: ")
 
-    new_desk = Desks(desk_type, price, status)
-    desks_instances.append(new_desk)
+    new_desk = Desks(name, desk_type, price, status)
+    desks_instances[name] = new_desk
     print("Dodano biurko!")
 
 
@@ -66,7 +72,7 @@ def admin_board():
 
         if user_choice == "1":
             print("1. LISTA REZERWACJI I DANE SUMARYCZNE")
-            pprint(desks_instances)
+            show_admin_desks_view()
 
         elif user_choice == "2":
             print("2. DODWANIE BIURKA/STANOWISKA")
