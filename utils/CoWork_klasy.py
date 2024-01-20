@@ -5,6 +5,9 @@ class Desks:
         self.price = price
         self.status = status
 
+    def __str__(self) -> str:
+        return f"{self.name}: {self.desk_type}, Price: {self.price} PLN/h, Status: {self.status}"
+
 
 # Create instances for each entry in the dictionary
 desks_instances = {

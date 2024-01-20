@@ -1,5 +1,4 @@
 from CoWork_klasy import *
-from pprint import pprint
 
 
 def show_admin_desks_view():
@@ -42,13 +41,14 @@ def customer_board():
 
     while user_choice != "8":
         print_menu_customer()
+
         user_choice = input("Wybierz opcję wybierając odpowiednią cyfrę:")
 
         if user_choice == "1":
             print("1. NASZA OFERTA")
         elif user_choice == "2":
             print("2. SZCZEGÓŁOWE SPECYFIKACJE ORAZ CENNIK USŁUG")
-            pprint(desks_instances)
+            print(desks_instances)
         elif user_choice == "3":
             print("3. DOSTĘPNOŚĆ BIUREK/STANOWISK")
         elif user_choice == "4":
@@ -68,6 +68,7 @@ def admin_board():
 
     while user_choice != "8":
         print_menu_admin()
+
         user_choice = input("Wybierz opcję wybierając odpowiednią cyfrę:")
 
         if user_choice == "1":
@@ -84,12 +85,17 @@ def admin_board():
 
         elif user_choice == "4":
             print("4. ANULOWANIE REZERWACJI")
+
         elif user_choice == "5":
             print("5. EDYCJA REGULAMINU USŁUG")
+
         elif user_choice == "6":
             print("6. EDYCJA DANYCH KONTAKTOWYCH")
+
         elif user_choice == "7":
+            print("7. ZAPISZ ZMIANY DO PLIKU")
             save_tasks_to_file()
+
         elif user_choice != "8":
             print(f"Przepraszam, wybrałeś {user_choice}, nie jest to poprawny wybór")
 
@@ -112,7 +118,7 @@ def print_menu_admin():
     print("4. ANULOWANIE REZERWACJI")
     print("5. EDYCJA REGULAMINU USŁUG")
     print("6. EDYCJA DANYCH KONTAKTOWYCH")
-    print("7. WYJŚCIE Z APLIKACJI/WYLOGOWANIE")
+    print("7. ZAPISZ ZMIANY DO PLIKU")
     print("8. WYJŚCIE Z APLIKACJI")
 
 
