@@ -4,34 +4,72 @@
 
 # from preloaded import MORSE_CODE
 
-MORSE_CODE = {'A': '.-', 'B': '-...',
-                   'C': '-.-.', 'D': '-..', 'E': '.',
-                   'F': '..-.', 'G': '--.', 'H': '....',
-                   'I': '..', 'J': '.---', 'K': '-.-',
-                   'L': '.-..', 'M': '--', 'N': '-.',
-                   'O': '---', 'P': '.--.', 'Q': '--.-',
-                   'R': '.-.', 'S': '...', 'T': '-',
-                   'U': '..-', 'V': '...-', 'W': '.--',
-                   'X': '-..-', 'Y': '-.--', 'Z': '--..',
-                   '1': '.----', '2': '..---', '3': '...--',
-                   '4': '....-', '5': '.....', '6': '-....',
-                   '7': '--...', '8': '---..', '9': '----.',
-                   '0': '-----', ',': '--..--', '.': '.-.-.-',
-                   '?': '..--..', '/': '-..-.', '-': '-....-',
-                   '(': '-.--.', ')': '-.--.-', ' ': '/'}
+MORSE_CODE = {
+    "A": ".-",
+    "B": "-...",
+    "C": "-.-.",
+    "D": "-..",
+    "E": ".",
+    "F": "..-.",
+    "G": "--.",
+    "H": "....",
+    "I": "..",
+    "J": ".---",
+    "K": "-.-",
+    "L": ".-..",
+    "M": "--",
+    "N": "-.",
+    "O": "---",
+    "P": ".--.",
+    "Q": "--.-",
+    "R": ".-.",
+    "S": "...",
+    "T": "-",
+    "U": "..-",
+    "V": "...-",
+    "W": ".--",
+    "X": "-..-",
+    "Y": "-.--",
+    "Z": "--..",
+    "1": ".----",
+    "2": "..---",
+    "3": "...--",
+    "4": "....-",
+    "5": ".....",
+    "6": "-....",
+    "7": "--...",
+    "8": "---..",
+    "9": "----.",
+    "0": "-----",
+    ",": "--..--",
+    ".": ".-.-.-",
+    "?": "..--..",
+    "/": "-..-.",
+    "-": "-....-",
+    "(": "-.--.",
+    ")": "-.--.-",
+    " ": "/",
+}
 
 
 def decode_morse(morse_code):
     morse_code = morse_code.strip()  # Remove leading and trailing whitespaces
-    morse_words = morse_code.split('   ')  # Split the Morse code into words
+    morse_words = morse_code.split("   ")  # Split the Morse code into words
 
     decoded_words = []
     for word in morse_words:
-        morse_chars = word.split(' ')  # Split the Morse word into characters
-        decoded_word = ''.join([key for char in morse_chars for key, value in MORSE_CODE.items() if value == char])
+        morse_chars = word.split(" ")  # Split the Morse word into characters
+        decoded_word = "".join(
+            [
+                key
+                for char in morse_chars
+                for key, value in MORSE_CODE.items()
+                if value == char
+            ]
+        )
         decoded_words.append(decoded_word)
 
-    decoded_sentence = ' '.join(decoded_words)
+    decoded_sentence = " ".join(decoded_words)
     return decoded_sentence
 
 
@@ -63,7 +101,8 @@ def duplicate_count(text):
 
     return count
 
-text = 'aabfbbsbdbs165131'
+
+text = "aabfbbsbdbs165131"
 
 print(duplicate_count(text))
 
@@ -91,6 +130,7 @@ def sum_two_smallest_numbers(numbers):
 
     return sum_of_two
 
+
 # Example usage:
 numbers = [19, 5, 42, 2, 77]
 result = sum_two_smallest_numbers(numbers)
@@ -114,14 +154,15 @@ print(result)
 # 1 -->  1
 # 2 --> 3 + 5 = 8
 
+
 def row_sum_odd_numbers(n):
-    #your code here
-    return n ** 3
+    # your code here
+    return n**3
 
 
 # mój poboczny eksperymrnt żeby zobaczyć so będzie większe
 n = 9
-x = n ** n
+x = n**n
 current = 1
 count = 1
 
@@ -130,7 +171,7 @@ while current < n:
     current += 1
 
 
-solution = (x > count) 
+solution = x > count
 print(x)
 print(count)
 print(solution)
@@ -144,9 +185,10 @@ def is_isogram(string):
     # your code
     # Convert the string to lowercase to ignore letter case
     string = string.lower()
-    
+
     # Check if the length of the set of characters is equal to the length of the string
     return len(set(string)) == len(string)
+
 
 # Examples:
 print(is_isogram("Dermatoglyphics"))  # Output: True
@@ -158,12 +200,11 @@ print(is_isogram("moOse"))  # Output: False
 #####################################################################################
 
 
-
 def get_count(sentence):
-    vowels = ['a', 'e', 'i', 'o', 'u']
+    vowels = ["a", "e", "i", "o", "u"]
     count = 0
 
-    for letter in sentence.split(''):
+    for letter in sentence.split(""):
         for vowel in vowels:
             if letter == vowel:
                 count += 1
@@ -173,6 +214,7 @@ def get_count(sentence):
 #####################################################################################
 ###############   ZADANIE 6      ####################################################
 #####################################################################################
+
 
 def solution(number):
     if number < 0:
@@ -184,10 +226,12 @@ def solution(number):
             count += j
 
     return count
+
+
 # drugie rozwiązanie
 def solution(number):
     return sum(i for i in range(number) if i % 3 == 0 or i % 5 == 0)
-  
+
 
 #####################################################################################
 ###############   ZADANIE 6      ####################################################
@@ -198,7 +242,7 @@ def count_smileys(arr):
     sf = ":;-~)D"
     count = 0
     if sf in arr:
-        count += 1/2
+        count += 1 / 2
 
 
 #####################################################################################
@@ -206,9 +250,8 @@ def count_smileys(arr):
 #####################################################################################
 
 
-
 def cakes(recipe, available):
-    number_of_cakes = float('inf')  # Set initially to positive infinity
+    number_of_cakes = float("inf")  # Set initially to positive infinity
 
     for ingredient, amount_required in recipe.items():
         if ingredient in available:
@@ -219,26 +262,52 @@ def cakes(recipe, available):
 
     return number_of_cakes
 
+
 # Examples
-print(cakes({'flour': 500, 'sugar': 200, 'eggs': 1}, {'flour': 1200, 'sugar': 1200, 'eggs': 5, 'milk': 200}))
+print(
+    cakes(
+        {"flour": 500, "sugar": 200, "eggs": 1},
+        {"flour": 1200, "sugar": 1200, "eggs": 5, "milk": 200},
+    )
+)
 # Output: 2
 
-print(cakes({'apples': 3, 'flour': 300, 'sugar': 150, 'milk': 100, 'oil': 100},
-            {'sugar': 500, 'flour': 2000, 'milk': 2000}))
+print(
+    cakes(
+        {"apples": 3, "flour": 300, "sugar": 150, "milk": 100, "oil": 100},
+        {"sugar": 500, "flour": 2000, "milk": 2000},
+    )
+)
 # Output: 0
 
 # Tutaj spróbuje zrobić list comprihension
 
+
 def cakes(recipe, available):
-    return min([available[ingredient] // amount_required if ingredient in available else 0 for ingredient, amount_required in recipe.items()], default=float('inf'))
+    return min(
+        [
+            available[ingredient] // amount_required if ingredient in available else 0
+            for ingredient, amount_required in recipe.items()
+        ],
+        default=float("inf"),
+    )
 
 
 # Examples
-print(cakes({'flour': 500, 'sugar': 200, 'eggs': 1}, {'flour': 1200, 'sugar': 1200, 'eggs': 5, 'milk': 200}))
+print(
+    cakes(
+        {"flour": 500, "sugar": 200, "eggs": 1},
+        {"flour": 1200, "sugar": 1200, "eggs": 5, "milk": 200},
+    )
+)
 # Output: 2
 
-print(cakes({'apples': 3, 'flour': 300, 'sugar': 150, 'milk': 100, 'oil': 100},
-            {'sugar': 500, 'flour': 2000, 'milk': 2000}))
+print(
+    cakes(
+        {"apples": 3, "flour": 300, "sugar": 150, "milk": 100, "oil": 100},
+        {"sugar": 500, "flour": 2000, "milk": 2000},
+    )
+)
 
 
 #####################################################################################
@@ -262,8 +331,6 @@ print(cakes({'apples': 3, 'flour': 300, 'sugar': 150, 'milk': 100, 'oil': 100},
 # Error checking for text strings or other invalid inputs is not required, only valid positive non-zero integers will be passed into the function.
 
 
-
-
 def narcissistic(value):
     num_digits = len(str(value))
     narc_num = 0
@@ -271,10 +338,11 @@ def narcissistic(value):
 
     while temp_value > 0:
         digit = temp_value % 10
-        narc_num += digit ** num_digits
+        narc_num += digit**num_digits
         temp_value //= 10
 
     return narc_num == value
+
 
 # Test cases
 print(narcissistic(153))  # True
@@ -299,9 +367,10 @@ def count(s):
             result[char] = 1
     return result
 
+
 # Test case
-print(count('aba'))
-print(count(''))
+print(count("aba"))
+print(count(""))
 
 #####################################################################################
 ###############   ZADANIE 9      ####################################################
@@ -310,6 +379,7 @@ print(count(''))
 # Your classmates asked you to copy some paperwork for them. You know that there are 'n' classmates and the paperwork has 'm' pages.
 
 # Your task is to calculate how many blank pages do you need. If n < 0 or m < 0 return 0.
+
 
 # rozwiązanie 1
 def paperwork(n, m):
@@ -320,9 +390,11 @@ def paperwork(n, m):
         k = n * m
     return k
 
-#rozwiązanie 2
+
+# rozwiązanie 2
 def paperwork(n, m):
     return max(n * m, 0) if n >= 0 and m >= 0 else 0
+
 
 # Testy
 print(paperwork(5, 10))  # Oczekiwane: 50
@@ -338,9 +410,11 @@ print(paperwork(-5, -10))  # Oczekiwane: 0
 
 # Eg: [0, 0, 0, 1] is treated as 0001 which is the binary representation of 1.
 
+
 def binary_array_to_number(arr):
     decimal_num = int("".join(map(str, arr)), 2)
     return decimal_num
+
 
 # Przykłady użycia
 binary_array1 = [1, 0, 1, 0, 1]
@@ -361,10 +435,12 @@ print(result2)  # Oczekiwane: 25
 # Task
 # Given a year, return the century it is in
 
+
 def century(year):
     # Calculate the century using integer division
     century_num = (year - 1) // 100 + 1
     return century_num
+
 
 # Examples
 print(century(1705))  # Expected output: 18
@@ -377,6 +453,7 @@ print(century(2001))  # Expected output: 21
 #####################################################################################
 
 # Szpanersko napisane "hello world!"
+
 
 def greet():
     binDict = {
@@ -402,13 +479,13 @@ def greet():
 
 def binDropper(pL, ship=False):
     if ship:
-        return int(pL, 2).to_bytes((int(pL, 2).bit_length() + 7) // 8, 'big').decode()
-    return bin(int.from_bytes(pL.encode(), 'big'))
+        return int(pL, 2).to_bytes((int(pL, 2).bit_length() + 7) // 8, "big").decode()
+    return bin(int.from_bytes(pL.encode(), "big"))
 
 
 print(greet())
 
-#jak to działa
+# jak to działa
 
 # Funkcja greet:
 
@@ -435,34 +512,36 @@ print(greet())
 # konwersji z binarnego na tekstowy i odwrotnie. Funkcja greet wykorzystuje te konwersje do stworzenia konkretnej zakodowanej wiadomości na podstawie wartości ASCII i pozycji.
 
 
-
-
 #####################################################################################
 ###############   ZADANIE 12      ####################################################
 #####################################################################################
 
 # sposób 1 nie do końca poprawny ponieważ nie działa na 3
 from math import sqrt
-def is_square(n):    
+
+
+def is_square(n):
     is_sq = False
     # sprawdza czy pierwiastek drugiego stopnia jest intigerem tylko, że bardzo łopatologicznie
     if n < 0:
-        is_sq = 'Negative numbers cannot be square numbers'
+        is_sq = "Negative numbers cannot be square numbers"
     elif sqrt(n) is not float:
         is_sq = True
     else:
         is_sq = False
     return is_sq
 
+
 print(is_square(3))
 
-#Sposób 2 ten już działa perfekcyjnie na wszystko
+# Sposób 2 ten już działa perfekcyjnie na wszystko
 
 import math
 
+
 def is_square(n):
     # sprawdza czy pierwiastek drugiego stopnia jest intigerem
-    return n > 0 and math.isqrt(n)**2 == n
+    return n > 0 and math.isqrt(n) ** 2 == n
 
 
 #####################################################################################
@@ -476,9 +555,6 @@ def is_square(n):
 # Input range : 1 <= n < 4000
 
 # In this kata 4 should be represented as IV, NOT as IIII (the "watchmaker's four").
-
-
-
 
 
 class RomanNumerals:
@@ -497,7 +573,7 @@ class RomanNumerals:
             ("IX", 9),
             ("V", 5),
             ("IV", 4),
-            ("I", 1)
+            ("I", 1),
         ]
 
         result = ""
@@ -521,11 +597,12 @@ class RomanNumerals:
 
         return result
 
+
 # Examples
 print(RomanNumerals.to_roman(1990))  # Expected output: 'MCMXC'
 print(RomanNumerals.to_roman(2008))  # Expected output: 'MMVIII'
-print(RomanNumerals.from_roman('MCMXC'))  # Expected output: 1990
-print(RomanNumerals.from_roman('MMVIII'))  # Expected output: 2008
+print(RomanNumerals.from_roman("MCMXC"))  # Expected output: 1990
+print(RomanNumerals.from_roman("MMVIII"))  # Expected output: 2008
 
 
 # to_roman(val: int) -> str:
@@ -562,7 +639,8 @@ Implement the function which takes an array containing the names of people that 
 ["Alex", "Jacob", "Mark", "Max"]  -->  "Alex, Jacob and 2 others like this"
 Note: For 4 or more names, the number in "and 2 others" simply increases."""
 
-#rozwiązanie 1 - to działa w wersji konsolowej
+
+# rozwiązanie 1 - to działa w wersji konsolowej
 def likes(names):
     if len(names) == 0:
         print("no one likes this")
@@ -575,7 +653,8 @@ def likes(names):
     else:
         print(f"{names[0]}, {names[1]}, and {len(names) - 2} others like this")
 
-#rozwiązanie 2 - to działa tak żebby zaliczyć katę na codewars
+
+# rozwiązanie 2 - to działa tak żebby zaliczyć katę na codewars
 def likes(names):
     if len(names) == 0:
         return "no one likes this"
@@ -594,7 +673,6 @@ likes(["Alice"])
 likes(["Bob", "Charlie"])
 likes(["Dave", "Eve", "Frank"])
 likes(["Grace", "Hank", "Ivy", "Jack"])
-
 
 
 #####################################################################################
@@ -618,6 +696,7 @@ def find_it(seq):
         if seq.count(num) % 2 != 0:
             return num
 
+
 # Examples
 print(find_it([7]))  # Output: 7
 print(find_it([0]))  # Output: 0
@@ -635,8 +714,10 @@ print(find_it([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]))  # Output: 4
 #####################################################################################
 """Turn boolean to string"""
 
+
 def boolean_to_string(b):
     return str(b)
+
 
 #####################################################################################
 ###############   ZADANIE 17      ###################################################
@@ -646,26 +727,41 @@ def boolean_to_string(b):
 s has an even number of petals and the other has an odd number of petals it means they are in love.
 Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't."""
 
-#Rozwiązanie 1
-def lovefunc( flower1, flower2 ):
+
+# Rozwiązanie 1
+def lovefunc(flower1, flower2):
     if flower1 % 2 == 0 and flower2 % 2 == 0 or (flower1 % 2 != 0 and flower2 % 2 != 0):
         return False
-    elif (flower1 % 2 != 0 and flower2 % 2 == 0) or (flower1 % 2 == 0 and flower2 % 2 != 0):
+    elif (flower1 % 2 != 0 and flower2 % 2 == 0) or (
+        flower1 % 2 == 0 and flower2 % 2 != 0
+    ):
         return True
-    
-#Rozwiązaanie 2
+
+
+# Rozwiązaanie 2
 def lovefunc(flower1, flower2):
     # Check if one flower has even petals and the other has odd petals
-    if (flower1 % 2 == 0 and flower2 % 2 != 0) or (flower1 % 2 != 0 and flower2 % 2 == 0):
+    if (flower1 % 2 == 0 and flower2 % 2 != 0) or (
+        flower1 % 2 != 0 and flower2 % 2 == 0
+    ):
         return True  # They are in love
     else:
         return False  # They aren't in love
-#Rozwiązanie 3
+
+
+# Rozwiązanie 3
 def lovefunc(f1, f2):
-    return True if (f1 % 2 == 0 and f2 % 2 != 0) or (f2 % 2 == 0 and f1 % 2 != 0) else False
-#Rozwiązanie 4 
-def lovefunc( flower1, flower2 ):
-    return (flower1+flower2)%2
+    return (
+        True
+        if (f1 % 2 == 0 and f2 % 2 != 0) or (f2 % 2 == 0 and f1 % 2 != 0)
+        else False
+    )
+
+
+# Rozwiązanie 4
+def lovefunc(flower1, flower2):
+    return (flower1 + flower2) % 2
+
 
 #####################################################################################
 ###############   ZADANIE 18      ###################################################
@@ -678,8 +774,10 @@ You get given the time in hours and you need to return the number of litres Nath
 
 For example:"""
 
+
 def litres(time):
     return time // 2
+
 
 #####################################################################################
 ###############   ZADANIE 19      ###################################################
@@ -689,8 +787,11 @@ def litres(time):
 What ways of achieving this do you know?
 
 Examples (input --> output):"""
+
+
 def number_to_string(num):
     return str(num)
+
 
 #####################################################################################
 ###############   ZADANIE 20      ###################################################
@@ -698,7 +799,9 @@ def number_to_string(num):
 """Your task in order to complete this Kata is to write a function which formats a duration, given as a number of seconds, in a human-friendly way.
 
 The function must accept a non-negative integer. If it is zero, it just returns "now". Otherwise, the duration is expressed as a combination of years, days, hours, minutes and seconds."""
-#rozwiązanie 1
+
+
+# rozwiązanie 1
 def format_duration(seconds):
     if seconds == 0:
         return "now"
@@ -708,7 +811,13 @@ def format_duration(seconds):
     hours, seconds = divmod(seconds, 3600)
     minutes, seconds = divmod(seconds, 60)
 
-    time_units = [("year", years), ("day", days), ("hour", hours), ("minute", minutes), ("second", seconds)]
+    time_units = [
+        ("year", years),
+        ("day", days),
+        ("hour", hours),
+        ("minute", minutes),
+        ("second", seconds),
+    ]
     result = []
 
     for unit, value in time_units:
@@ -717,26 +826,31 @@ def format_duration(seconds):
         elif value > 1:
             result.append(f"{value} {unit}s")
 
-    return ', '.join(result[:-1]) + ' and ' + result[-1] if len(result) > 1 else result[0]
+    return (
+        ", ".join(result[:-1]) + " and " + result[-1] if len(result) > 1 else result[0]
+    )
+
 
 # Example usage:
 print(format_duration(3662))  # Output: "1 hour, 1 minute and 2 seconds"
-print(format_duration(0))     # Output: "now"
+print(format_duration(0))  # Output: "now"
 
 """This code takes a number of seconds as input and converts it into a human-readable format, expressing the duration in years, days,
  hours, minutes, and seconds. The function handles singular and plural forms appropriately and returns the formatted string."""
 
 
-#Rozwiązanie 2
+# Rozwiązanie 2
 
-times = [("year", 365 * 24 * 60 * 60), 
-         ("day", 24 * 60 * 60),
-         ("hour", 60 * 60),
-         ("minute", 60),
-         ("second", 1)]
+times = [
+    ("year", 365 * 24 * 60 * 60),
+    ("day", 24 * 60 * 60),
+    ("hour", 60 * 60),
+    ("minute", 60),
+    ("second", 1),
+]
+
 
 def format_duration(seconds):
-
     if not seconds:
         return "now"
 
@@ -750,12 +864,172 @@ def format_duration(seconds):
 
         seconds = seconds % secs
 
-    return ', '.join(chunks[:-1]) + ' and ' + chunks[-1] if len(chunks) > 1 else chunks[0]
+    return (
+        ", ".join(chunks[:-1]) + " and " + chunks[-1] if len(chunks) > 1 else chunks[0]
+    )
+
 
 #####################################################################################
 ###############   ZADANIE 21      ###################################################
 #####################################################################################
 
+"""Welcome. In this kata, you are asked to square every digit of a number and concatenate them.
+
+For example, if we run 9119 through the function, 811181 will come out, because 92 is 81 and 12 is 1. (81-1-1-81)
+
+Example #2: An input of 765 will/should return 493625 because 72 is 49, 62 is 36, and 52 is 25. (49-36-25)
+
+Note: The function accepts an integer and returns an integer.
+
+Happy Coding!"""
 
 
+# first attempt - it does not work as solution in code wars
+def square_digits(num):
+    for i in str(num):
+        square_digit = str(int(i) ** 2)
+    result = int("".join(square_digit))
+    return result
 
+
+# second attmpt - it does work as solution in code wars
+def square_digits(num):
+    # Convert the number to a string to iterate through its digits
+    num_str = str(num)
+
+    # Use a list comprehension to square each digit and concatenate
+    squared_digits = [str(int(digit) ** 2) for digit in num_str]
+
+    # Join the squared digits and convert back to an integer
+    result = int("".join(squared_digits))
+
+    return result
+
+
+# Test cases
+print(square_digits(9119))  # Output: 811181
+print(square_digits(765))  # Output: 493625
+
+#####################################################################################
+###############   ZADANIE 22      ###################################################
+#####################################################################################
+
+"""Consider an array/list of sheep where some sheep may be missing from their place.
+ We need a function that counts the number of sheep present in the array (true means present)."""
+
+
+# Rozwiązanie 1 - it does work as solution in code wars
+def count_sheeps(sheep):
+    for i in sheep:
+        if i != (True or False):
+            i = 0
+        elif i == (True or False):
+            i = sheep.count(True)
+    result = i
+    return result
+
+
+# Rozwiązanie 2 - it does work as solution in code wars
+def count_sheeps(sheep):
+    return sheep.count(True)
+
+
+sheep = [
+    True,
+    True,
+    True,
+    False,
+    True,
+    True,
+    True,
+    True,
+    True,
+    False,
+    True,
+    False,
+    True,
+    False,
+    False,
+    True,
+    True,
+    True,
+    True,
+    True,
+    False,
+    False,
+    True,
+    True,
+]
+result = count_sheeps(sheep)
+print(result)
+
+#####################################################################################
+###############   ZADANIE 22      ###################################################
+#####################################################################################
+
+"""Some numbers have funny properties. For example:
+
+89 --> 8¹ + 9² = 89 * 1
+695 --> 6² + 9³ + 5⁴= 1390 = 695 * 2
+46288 --> 4³ + 6⁴+ 2⁵ + 8⁶ + 8⁷ = 2360688 = 46288 * 51
+Given two positive integers n and p, we want to find a positive integer k, if it exists, such that the sum of the digits of n raised to consecutive powers starting from p is equal to k * n.
+
+In other words, writing the consecutive digits of n as a, b, c, d ..., is there an integer k such that :
+
+If it is the case we will return k, if not return -1.
+
+Note: n and p will always be strictly positive integers."""
+
+
+def dig_pow(n, p):
+    # Convert the number n to a list of its digits
+    digits = [int(digit) for digit in str(n)]
+
+    # Calculate the sum of consecutive powers
+    power_sum = sum([digit ** (p + i) for i, digit in enumerate(digits)])
+
+    # Check if there is an integer k such that power_sum = n * k
+    if power_sum % n == 0:
+        return power_sum // n  # Return k
+    else:
+        return -1  # No such k exists
+
+
+# Test cases
+print(dig_pow(89, 1))  # Output: 1
+print(dig_pow(695, 2))  # Output: 2
+print(dig_pow(46288, 3))  # Output: 51
+print(dig_pow(92, 1))  # Output: -1 (
+
+#####################################################################################
+###############   ZADANIE 22      ###################################################
+#####################################################################################
+
+
+"""There is a bus moving in the city which takes and drops some people at each bus stop.
+
+You are provided with a list (or array) of integer pairs. Elements of each pair represent the number of people that get on the bus (the first item) and the number of people that get off the bus (the second item) at a bus stop.
+
+Your task is to return the number of people who are still on the bus after the last bus stop (after the last array). Even though it is the last bus stop, the bus might not be empty and some people might still be inside the bus, they are probably sleeping there :D
+
+Take a look on the test cases.
+
+Please keep in mind that the test cases ensure that the number of people in the bus is always >= 0. So the returned integer can't be negative.
+
+The second value in the first pair in the array is 0, since the bus is empty in the first bus stop."""
+
+
+def number_of_people(bus_stops):
+    # Calculate the net change in the number of people at each bus stop
+    net_change = [stop[0] - stop[1] for stop in bus_stops]
+
+    # Return the sum of the net changes, representing the remaining people on the bus
+    return sum(net_change)
+
+
+# Test cases
+bus_stops_1 = [(10, 0), (3, 5), (5, 8)]
+bus_stops_2 = [(5, 0), (2, 2), (7, 3)]
+
+print(number_of_people(bus_stops_1))  # Output: 5
+print(number_of_people(bus_stops_2))  # Output: 10

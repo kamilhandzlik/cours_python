@@ -1,0 +1,90 @@
+twój zapis                        | prawdziwe znaczenie
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+operatory logiczne, obiektowe i deskryptorowe
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+a(...)                            | a.__call__(...)
+a is b                            | atomowe, zawsze ten sam efekt co id(a).__eq__(id(b))
+a is not b                        | atomowe, zawsze ten sam efekt co id(a).__ne__(id(b))
+not a                             | atomowe
+a in b                            | b.__contains__(a)
+a not in b                        | not b.__contains__(a)
+getattr(a, 'x')     albo  a.x     | try: a.__getattribute__('x') except AttributeError: a.__getattr__('x'); x.__get__(a, type(a))
+c = hasattr(a, b)                 | atomowe, prawdopodobnie takie coś try: getattr(a, b) except AttributeError: c = False else: c = True
+setattr(a, 'x', c)  albo  a.x = c | a.__setattr__('x', c); type(a).b.__set__(c); c.__set_name__(type(a), b)
+del a                             | a.__del__()
+delattr(a, 'x')     albo  del a.x | a.__delattr__('x'); a.x.__delete__(a)
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+operatory porównawcze
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+a == b                            | a.__eq__(b)              albo   b.__eq__(a)
+a != b                            | a.__ne__(b)              albo   b.__ne__(a)
+a < b                             | a.__lt__(b)              albo   b.__gt__(a)
+a <= b                            | a.__le__(b)              albo   b.__ge__(a)
+a > b                             | a.__gt__(b)              albo   b.__lt__(a)
+a >= b                            | a.__ge__(b)              albo   b.__le__(a)
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+operatory matematyczne jednoargumentowe
+----------------------------------+-------------------------------------------------------------------------------------------------------------
++a                                | a.__pos__()
+-a                                | a.__neg__()
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+operatory matematyczne wieloargumentowe
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+a + b                             | a.__add__(b)             albo   b.__radd__(a)
+a += b                            | a = a.__iadd__(b)        albo   a = b.__radd__(a)
+a - b                             | a.__sub__(b)             albo   b.__rsub__(a)
+a -= b                            | a = a.__isub__(b)        albo   a = b.__rsub__(a)
+a * b                             | a.__mul__(b)             albo   b.__rmul__(a)
+a *= b                            | a = a.__imul__(b)        albo   a = b.__rmul__(a)
+a / b                             | a.__truediv__(b)         albo   b.__rtruediv__(a)
+a /= b                            | a = a.__itruediv__(b)    albo   a = b.__rtruediv__(a)
+a // b                            | a.__floordiv__(b)        albo   b.__rfloordiv__(a)
+a //= b                           | a = a.__ifloordiv__(b)   albo   a = b.__rfloordiv__(a)
+a @ b                             | a.__matmul__(b)          albo   b.__rmatmul__(a)
+a @= b                            | a = a.__imatmul__(b)     albo   a = b.__rmatmul__(a)
+a ** b                            | a.__pow__(b)             albo   b.__rpow__(a)
+a **= b                           | a = a.__ipow__(b)        albo   a = b.__rpow__(a)
+a % b                             | a.__mod__(b)             albo   b.__rmod__(a)
+a %= b                            | a = a.__imod__(b)        albo   a = b.__rmod__(a)
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+operatory bitowe jednoargumentowe
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+~a                                | a.__inv__() lub a.__invert__()
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+operatory bitowe wieloargumentowe
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+a | b                             | a.__or__(b)              albo   b.__ror__(a)
+a |= b                            | a = a.__ior__(b)         albo   a = b.__ror__(a)
+a & b                             | a.__and__(b)             albo   b.__rand__(a)
+a &= b                            | a = a.__iand__(b)        albo   a = b.__rand__(a)
+a ^ b                             | a.__xor__(b)             albo   b.__rxor__(a)
+a ^= b                            | a = a.__ixor__(b)        albo   a = b.__rxor__(a)
+a >> b                            | a.__rshift__(b)          albo   b.__rrshift__(a)
+a >>= b                           | a = a.__irshift__(b)     albo   a = b.__rrshift__(a)
+a << b                            | a.__lshift__(b)          albo   b.__rlshift__(a)
+a <<= b                           | a = a.__ilshift__(b)     albo   a = b.__rlshift__(a)
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+operatory indeksowania
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+a[b]                              | a.__getitem__(b)
+a[b, c, ...]                      | a.__getitem__((b, c, ...))
+a[x:y:z]                          | a.__getitem__(slice(x, y, z)), x=y=z=None
+a[b] = c                          | a.__setitem__(b, c)
+a[b, c, ...] = d                  | a.__setitem__((b, c, ...), d)
+a[x:y:z] = b                      | a.__setitem__(slice(x, y, z), b)
+del a[b]                          | a.__delitem__(b)
+del a[b, c, ...]                  | a.__delitem__((b, c, ...))
+del a[x:y:z]                      | a.__delitem__(slice(x, y, z))
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+operatory funkcyjne
+----------------------------------+-------------------------------------------------------------------------------------------------------------
+abs(a)                            | a.__abs__()
+float(a)                          | a.__float__()
+hash(a)                           | a.__hash__()
+int(a)                            | a.__int__()
+iter(a)                           | a.__iter__()
+len(a)                            | a.__len__()
+round(a, digits)                  | a.__round__(digits), digits=1
+str(a)                            | a.__str__()
+copy(a)                           | a.__copy__(), from copy import copy
+----------------------------------+-------------------------------------------------------------------------------------------------------------
