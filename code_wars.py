@@ -964,7 +964,7 @@ result = count_sheeps(sheep)
 print(result)
 
 #####################################################################################
-###############   ZADANIE 22      ###################################################
+###############   ZADANIE 23      ###################################################
 #####################################################################################
 
 """Some numbers have funny properties. For example:
@@ -1002,7 +1002,7 @@ print(dig_pow(46288, 3))  # Output: 51
 print(dig_pow(92, 1))  # Output: -1 (
 
 #####################################################################################
-###############   ZADANIE 22      ###################################################
+###############   ZADANIE 24      ###################################################
 #####################################################################################
 
 
@@ -1033,3 +1033,284 @@ bus_stops_2 = [(5, 0), (2, 2), (7, 3)]
 
 print(number_of_people(bus_stops_1))  # Output: 5
 print(number_of_people(bus_stops_2))  # Output: 10
+
+#####################################################################################
+###############   ZADANIE 25      ###################################################
+#####################################################################################
+"""Build a pyramid-shaped tower, as an array/list of strings, given a positive integer number of floors. A tower block is represented with "*" character.
+
+For example, a tower with 3 floors looks like this:
+
+[
+  "  *  ",
+  " *** ", 
+  "*****"
+]
+And a tower with 6 floors looks like this:
+
+[
+  "     *     ", 
+  "    ***    ", 
+  "   *****   ", 
+  "  *******  ", 
+  " ********* ", 
+  "***********"
+]"""
+
+
+# Rozwiązanie 1
+def tower_builder(n_floors):
+    tower = []
+    for i in range(n_floors):
+        # Calculate the number of spaces and asterisks for each floor
+        spaces = " " * (n_floors - i - 1)
+        asterisks = "*" * (2 * i + 1)
+        # Combine spaces and asterisks to form a floor and add it to the tower
+        floor = spaces + asterisks + spaces
+        tower.append(floor)
+    return tower
+
+
+# Test cases
+tower_3_floors = tower_builder(3)
+tower_6_floors = tower_builder(6)
+
+print(tower_3_floors)
+print(tower_6_floors)
+
+
+# Rozwiązanie 2
+def tower_builder(n):
+    return [("*" * (i * 2 - 1)).center(n * 2 - 1) for i in range(1, n + 1)]
+
+
+#####################################################################################
+###############   ZADANIE 26      ###################################################
+#####################################################################################
+
+"""Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
+
+"""
+
+
+# Rozwiązanie 1
+def even_or_odd(number):
+    i = number
+    if i % 2 != 0:
+        return "Odd"
+    elif i % 2 == 0:
+        return "Even"
+
+
+# Rozwiąznie 2
+def even_or_odd(number):
+    return "Odd" if number % 2 != 0 else "Even"
+
+
+#####################################################################################
+###############   ZADANIE 27      ###################################################
+#####################################################################################
+
+"""ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits.
+
+If the function is passed a valid PIN string, return true, else return false.
+
+Examples (Input --> Output)
+"1234"   -->  true
+"12345"  -->  false
+"a234"   -->  false"""
+
+
+# Rozwiązanie 1
+def validate_pin(pin):
+    if (len(pin) == 6 or len(pin) == 4) and pin.isdigit():
+        return True
+    else:
+        return False
+
+
+# Rozwiązanie 2
+def validate_pin(pin):
+    return (len(pin) == 6 or len(pin) == 4) and pin.isdigit()
+
+
+#####################################################################################
+###############   ZADANIE 28      ###################################################
+#####################################################################################
+
+"""There was a test in your class and you passed it. Congratulations!
+But you're an ambitious person. You want to know if you're better than the average student in your class.
+
+You receive an array with your peers' test scores. Now calculate the average and compare your score!
+
+Return True if you're better, else False!"""
+
+
+# Rozwiązanie 1
+def better_than_average(class_points, your_points):
+    average = sum(class_points) / len(class_points)
+    if your_points > average:
+        return True
+    else:
+        return False
+
+
+# Rozwiązanie 2
+
+
+def better_than_average(class_points, your_points):
+    average = sum(class_points) / len(class_points)
+    return True if your_points > average else False
+
+
+# Rozwiązanie 3
+def better_than_average(class_points, your_points):
+    return your_points > sum(class_points) / len(class_points)
+
+
+# Rozwiązanie 4
+import statistics
+
+
+def better_than_average(class_points, your_points):
+    return your_points > statistics.mean(class_points)
+
+
+#####################################################################################
+###############   ZADANIE 29      ###################################################
+#####################################################################################
+
+"""Given an array of integers.
+Return an array, where the first element is the count of positives numbers and the second element i
+s sum of negative numbers. 0 is neither positive nor negative.
+If the input is an empty array or is null, return an empty array."""
+
+
+def count_positives_sum_negatives(arr):
+    if arr is None or len(arr) == 0:
+        return []
+
+    positive_count = sum(1 for num in arr if num > 0)
+    negative_sum = sum(num for num in arr if num < 0)
+
+    return [positive_count, negative_sum]
+
+
+result_1 = count_positives_sum_negatives([1, -2, 3, 4, 0])
+result_2 = count_positives_sum_negatives([-1, -2, -3, -4, 0])
+result_3 = count_positives_sum_negatives([])
+
+print(result_1)  # Output: [3, -2]
+print(result_2)  # Output: [0, -10]
+print(result_3)  # Output: []
+
+#####################################################################################
+###############   ZADANIE 30      ###################################################
+#####################################################################################
+
+"""Take 2 strings s1 and s2 including only letters from a to z. Return a new sorted string, the longest possible, containing distinct letters - each taken only once - coming from s1 or s2.
+
+Examples:
+a = "xyaabbbccccdefww"
+b = "xxxxyyyyabklmopq"
+longest(a, b) -> "abcdefklmopqwxy"
+
+a = "abcdefghijklmnopqrstuvwxyz"
+longest(a, a) -> "abcdefghijklmnopqrstuvwxyz"""
+
+
+# Rozwiązanie 1
+def longest(a1, a2):
+    s1 = "".join(a1 + a2)
+    s2 = "".join(sorted(set(s1)))
+    return s2
+
+
+# Rozwiązanie 2
+def longest(a1, a2):
+    return "".join(sorted(set(a1 + a2)))
+
+
+"""was tested through this code which I for some reason find very clever 
+import codewars_test as test
+    
+@test.describe("longest")
+def tests():
+    @test.it("basic tests")
+    def basics():
+        test.assert_equals(longest("aretheyhere", "yestheyarehere"), "aehrsty")
+        test.assert_equals(longest("loopingisfunbutdangerous", "lessdangerousthancoding"), "abcdefghilnoprstu")
+        test.assert_equals(longest("inmanylanguages", "theresapairoffunctions"), "acefghilmnoprstuy")
+        test.assert_equals(longest("lordsofthefallen", "gamekult"), "adefghklmnorstu")
+        test.assert_equals(longest("codewars", "codewars"), "acdeorsw")
+        test.assert_equals(longest("agenerationmustconfrontthelooming", "codewarrs"), "acdefghilmnorstuw")
+
+from random import randint
+
+@test.describe("longest")
+def random_tests():
+    #-----------------
+    def do_ex(k):
+        i, res = 0, ""
+        while (i < 15):
+            res += chr(randint(97+k, 122)) * randint(1, 10)
+            i += 1
+        return res
+    def longest_sol(a1, a2):
+        return "".join(sorted(set(a1 + a2)))
+    #-----------------
+    @test.it("Random tests")
+    def random():
+        for _ in range(0, 200):
+            s1 = do_ex(randint(0, 10))
+            s2 = do_ex(randint(0, 8))
+            sol = longest_sol(s1, s2)
+            test.assert_equals(longest(s1, s2), sol)
+"""
+
+#####################################################################################
+###############   ZADANIE 31      ###################################################
+#####################################################################################
+
+"""It's pretty straightforward. Your goal is to create a function that removes the first and last characters of a string.
+ You're given one parameter, the original string.
+ You don't have to worry about strings with less than two characters."""
+
+
+# Rozwiązanie 1
+def remove_char(s):
+    return s[1:-1]
+
+
+#####################################################################################
+###############   ZADANIE 32      ###################################################
+#####################################################################################
+
+"""Write function bmi that calculates body mass index (bmi = weight / height2).
+
+if bmi <= 18.5 return "Underweight"
+
+if bmi <= 25.0 return "Normal"
+
+if bmi <= 30.0 return "Overweight"
+
+if bmi > 30 return "Obese"""
+
+
+def bmi(weight, height):
+    bmi = weight / (height**2)
+    if bmi <= 18.5:
+        return "Underweight"
+    elif bmi <= 25.0:
+        return "Normal"
+    elif bmi <= 30.0:
+        return "Overweight"
+    elif bmi > 30:
+        return "Obese"
+
+
+print(bmi(185, 95))
+
+#####################################################################################
+###############   ZADANIE 33      ###################################################
+#####################################################################################
