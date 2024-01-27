@@ -1309,8 +1309,271 @@ def bmi(weight, height):
         return "Obese"
 
 
-print(bmi(185, 95))
-
 #####################################################################################
 ###############   ZADANIE 33      ###################################################
+#####################################################################################
+
+"""Our football team has finished the championship.
+
+Our team's match results are recorded in a collection of strings.
+ Each match is represented by a string in the format "x:y",
+ where x is our team's score and y is our opponents score.
+
+For example: ["3:1", "2:2", "0:1", ...]
+
+Points are awarded for each match as follows:
+
+if x > y: 3 points (win)
+if x < y: 0 points (loss)
+if x = y: 1 point (tie)
+We need to write a function that takes this collection and returns the number of points
+ our team (x) got in the championship by the rules given above."""
+
+
+def points(games):
+    result_x = 0
+    result_y = 0
+
+    for match in games:
+        x, y = map(int, match.split(":"))
+
+        if x > y:
+            result_x += 3
+        elif x < y:
+            result_y += 3
+        else:
+            result_x += 1
+            result_y += 1
+
+    return result_x
+
+
+# Przykład użycia:
+match_results = ["3:1", "2:2", "0:1"]
+total_points = points(match_results)
+print(f"Total points: {total_points}")
+
+#####################################################################################
+###############   ZADANIE 34      ###################################################
+#####################################################################################
+
+"""You live in the city of Cartesia where all roads are laid out in a perfect grid.
+You arrived ten minutes too early to an appointment, so you decided to take the opportunity
+to go for a short walk. The city provides its citizens with a Walk Generating App on their
+phones -- everytime you press the button it sends you an array of one-letter strings
+representing directions to walk (eg. ['n', 's', 'w', 'e']). You always walk only a single block
+ for each letter (direction) and you know it takes you one minute to traverse one city block, so create
+ a function that will return true if the walk the app gives you will take you exactly ten minutes (you don't want to be early or late!)
+ and will, of course, return you to your starting point. Return false otherwise."""
+
+
+# Rozwiązanie 1 - działa ale nie dokońca
+def is_valid_walk(walk):
+    directions = ["n", "s", "e", "w"]
+    time = 0
+    for direction in directions:
+        for direction in walk:
+            time += 1
+            if (direction in walk) != 0 or time != 10:
+                return False
+            else:
+                return True
+
+
+# Rozwiązanie 2 - działa wpełni
+def is_valid_walk(walk):
+    if len(walk) != 10:  # Sprawdzamy, czy ilość kroków wynosi dokładnie 10
+        return False
+
+    # Sprawdzamy, czy dla każdego kierunku mamy przeciwny kierunek
+    return walk.count("n") == walk.count("s") and walk.count("e") == walk.count("w")
+
+
+# Rozwiązanie 3
+def isValidWalk(walk):
+    return (
+        len(walk) == 10
+        and walk.count("n") == walk.count("s")
+        and walk.count("e") == walk.count("w")
+    )
+
+
+# Przykład użycia:
+example_walk = ["n", "s", "e", "w", "n", "s", "e", "w", "n", "s"]
+result = is_valid_walk(example_walk)
+print(result)
+
+#####################################################################################
+###############   ZADANIE 35      ###################################################
+#####################################################################################
+
+"""In this kata we want to convert a string into an integer. The strings simply represent the numbers in words.
+
+Examples:
+
+"one" => 1
+"twenty" => 20
+"two hundred forty-six" => 246
+"seven hundred eighty-three thousand nine hundred and nineteen" => 783919
+Additional Notes:
+
+The minimum number is "zero" (inclusively)
+The maximum number, which must be supported is 1 million (inclusively)
+The "and" in e.g. "one hundred and twenty-four" is optional, in some cases it's present and in others it's not
+All tested numbers are valid, you don't need to validate them"""
+
+
+def parse_int(s):
+    # Define a dictionary to map words to their numeric values
+    word_to_num = {
+        "zero": 0,
+        "one": 1,
+        "two": 2,
+        "three": 3,
+        "four": 4,
+        "five": 5,
+        "six": 6,
+        "seven": 7,
+        "eight": 8,
+        "nine": 9,
+        "ten": 10,
+        "eleven": 11,
+        "twelve": 12,
+        "thirteen": 13,
+        "fourteen": 14,
+        "fifteen": 15,
+        "sixteen": 16,
+        "seventeen": 17,
+        "eighteen": 18,
+        "nineteen": 19,
+        "twenty": 20,
+        "thirty": 30,
+        "forty": 40,
+        "fifty": 50,
+        "sixty": 60,
+        "seventy": 70,
+        "eighty": 80,
+        "ninety": 90,
+        "hundred": 100,
+        "thousand": 1000,
+        "million": 1000000,
+    }
+
+    # Split the input string into words
+    words = s.replace("-", " ").replace(" and ", " ").split()
+
+    # Initialize variables to track the result
+    result = 0
+    current_number = 0
+
+    # Process each word in the input string
+    for word in words:
+        # Convert the word to its numeric value
+        num = word_to_num[word]
+
+        # Update the result based on the current word
+        if num == 100:
+            current_number *= num
+        elif num == 1000 or num == 1000000:
+            result += current_number * num
+            current_number = 0
+        else:
+            current_number += num
+
+    # Add the last current_number to the result
+    result += current_number
+
+    return result
+
+
+# Examples
+print(parse_int("one"))  # Output: 1
+print(parse_int("twenty"))  # Output: 20
+print(parse_int("two hundred forty-six"))  # Output: 246
+print(
+    parse_int("seven hundred eighty-three thousand nine hundred and nineteen")
+)  # Output: 783919
+
+#####################################################################################
+###############   ZADANIE 36      ###################################################
+#####################################################################################
+
+"""Write a method that takes a field for well-known board game "Battleship" as an argument and returns true if it has a valid disposition of ships, false otherwise. Argument is guaranteed to be 10*10 two-dimension array. Elements in the array are numbers, 0 if the cell is free and 1 if occupied by ship.
+
+Battleship (also Battleships or Sea Battle) is a guessing game for two players. Each player has a 10x10 grid containing several "ships" and objective is to destroy enemy's forces by targetting individual cells on his field. The ship occupies one or more cells in the grid. Size and number of ships may differ from version to version. In this kata we will use Soviet/Russian version of the game.
+
+
+Before the game begins, players set up the board and place the ships accordingly to the following rules:
+There must be single battleship (size of 4 cells), 2 cruisers (size 3), 3 destroyers (size 2) and 4 submarines (size 1). Any additional ships are not allowed, as well as missing ships.
+Each ship must be a straight line, except for submarines, which are just single cell.
+
+The ship cannot overlap or be in contact with any other ship, neither by edge nor by corner.
+
+This is all you need to solve this kata. If you're interested in more information about the game, visit this link."""
+
+
+def validate_battlefield(field):
+    # Define the counts of ships of different sizes
+    ship_counts = {4: 1, 3: 2, 2: 3, 1: 4}
+
+    # Helper function to check if a ship of given size can be placed at a specific position
+    def can_place_ship(size, row, col, direction):
+        if direction == "horizontal":
+            for i in range(size):
+                if field[row][col + i] != 0:
+                    return False
+        else:  # direction == 'vertical'
+            for i in range(size):
+                if field[row + i][col] != 0:
+                    return False
+        return True
+
+    # Helper function to mark cells occupied by a ship
+    def mark_ship(size, row, col, direction):
+        if direction == "horizontal":
+            for i in range(size):
+                field[row][col + i] = 1
+        else:  # direction == 'vertical'
+            for i in range(size):
+                field[row + i][col] = 1
+
+    # Iterate through the field and validate ships
+    for row in range(10):
+        for col in range(10):
+            if field[row][col] == 1:
+                for size in ship_counts:
+                    if ship_counts[size] > 0:
+                        if can_place_ship(size, row, col, "horizontal"):
+                            mark_ship(size, row, col, "horizontal")
+                            ship_counts[size] -= 1
+                            break
+                        elif can_place_ship(size, row, col, "vertical"):
+                            mark_ship(size, row, col, "vertical")
+                            ship_counts[size] -= 1
+                            break
+                        else:
+                            return False
+
+    # Check if all ships are placed
+    return all(count == 0 for count in ship_counts.values())
+
+
+# Example usage:
+battleship_field = [
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+]
+
+print(validate_battlefield(battleship_field))  # Output: True
+
+#####################################################################################
+###############   ZADANIE 37      ###################################################
 #####################################################################################

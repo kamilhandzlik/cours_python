@@ -1,0 +1,51 @@
+class Products:
+    def __init__(
+        self,
+        type_of_prod: str,
+        name: str,
+        description: str,
+        technical_data: str,
+        num_of_items_in_magazine: int,
+        price: int,
+    ):
+        self.type_of_prod = type_of_prod
+        self.name = name
+        self.description = description
+        self.technical_data = technical_data
+        self.num_of_items_in_magazine = num_of_items_in_magazine
+        self.price = price
+
+        def show_info_about_products(self):
+            print(
+                f"""Nazwa {self.name}, Typ materiału {type_of_prod},
+                   Opis {self.description}, Dane techniczne{self.technical_data} 
+                   - Cena: {self.price} PLN, Dostępność: {self.num_of_items_in_magazine} sztuk"""
+            )
+
+
+class Magazine:
+    def __init__(self):
+        self.produkty = []
+
+    def dodaj_produkt(self, produkt):
+        self.produkty.append(produkt)
+
+    def wyswietl_produkty(self):
+        print("Produkty w magazynie:")
+        for produkt in self.produkty:
+            produkt.show_informations()
+
+
+class InternetShop:
+    def __init__(self):
+        self.magazyn = Magazine()
+
+    def add_product_to_magazine(self, produkt):
+        self.magazyn.add_product(produkt)
+
+    def show_products_in_shop(self):
+        self.magazyn.wyswietl_produkty()
+
+
+
+
