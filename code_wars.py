@@ -1577,3 +1577,103 @@ print(validate_battlefield(battleship_field))  # Output: True
 #####################################################################################
 ###############   ZADANIE 37      ###################################################
 #####################################################################################
+
+
+# Rozwiązanie 1 - niedziała tylko na tym jednym sprawdzeniu poniżej
+def solution(text, ending):
+    return True if ending in text else False
+
+
+"""Incorrect answer for:
+    text = 'samurai'
+  ending = 'ra'
+Assertion failed: True should equal False"""
+
+
+# Rozwiązanie 2
+def solution(string, ending):
+    return ending in string[-len(ending) :]
+
+
+# Rozwiązanie 3
+def solution(text, ending):
+    return text.endswith(ending)
+
+
+print(solution("abc", "bc"))  # Output: True
+print(solution("abc", "d"))  # Output: False
+print(solution("samurai", "ra"))  # Output: True
+
+
+#####################################################################################
+###############   ZADANIE 38      ###################################################
+#####################################################################################
+
+"""Make a program that filters a list of strings and returns a list with only your friends name in it.
+
+If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
+
+Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]
+
+i.e.
+
+friend ["Ryan", "Kieran", "Mark"] `shouldBe` ["Ryan", "Mark"]
+Note: keep the original order of the names in the output."""
+
+
+# Rozwiązanie 1
+def friend(x):
+    fren_list = []
+    for i in x:
+        if len(i) == 4:
+            fren_list.append(i)
+    return fren_list
+
+
+# Rozwiązanie 2
+def friend(x):
+    return [friend for friend in x if len(friend) == 4]
+
+
+#####################################################################################
+###############   ZADANIE 39      ###################################################
+#####################################################################################
+"""Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+
+For example (Input --> Output):
+
+39 --> 3 (because 3*9 = 27, 2*7 = 14, 1*4 = 4 and 4 has only one digit)
+999 --> 4 (because 9*9*9 = 729, 7*2*9 = 126, 1*2*6 = 12, and finally 1*2 = 2)
+4 --> 0 (because 4 is already a one-digit number)"""
+
+
+# Rozwiązanie
+def persistence(num):
+    if num < 10:
+        return 0
+
+    count = 0
+    while num >= 10:
+        product = 1
+        for digit in str(num):
+            product *= int(digit)
+        num = product
+        count += 1
+
+    return count
+
+
+# Example usage:
+print(persistence(39))  # Output: 3
+print(persistence(999))  # Output: 4
+print(persistence(4))  # Output: 0
+
+
+#####################################################################################
+###############   ZADANIE 40      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 41      ###################################################
+#####################################################################################
