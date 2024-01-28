@@ -1664,16 +1664,241 @@ def persistence(num):
 
 
 # Example usage:
-print(persistence(39))  # Output: 3
-print(persistence(999))  # Output: 4
-print(persistence(4))  # Output: 0
+# print(persistence(39))  # Output: 3
+# print(persistence(999))  # Output: 4
+# print(persistence(4))  # Output: 0
 
 
 #####################################################################################
 ###############   ZADANIE 40      ###################################################
 #####################################################################################
 
+"""Your task is to create a function that does four basic mathematical operations.
+
+The function should take three arguments - operation(string/char), value1(number), value2(number).
+The function should return result of numbers after applying the chosen operation.
+
+Examples(Operator, value1, value2) --> output
+('+', 4, 7) --> 11
+('-', 15, 18) --> -3
+('*', 5, 5) --> 25
+('/', 49, 7) --> 7"""
+
+
+# Rozwiązanie 1 - Przyznaję po najprostszej linii oporu ale od czegoś trzeba wyjść :D
+def basic_op(operator, value1, value2):
+    solution = 0
+    if operator == "+":
+        solution = value1 + value2
+        return solution
+    elif operator == "-":
+        solution = value1 - value2
+        return solution
+    elif operator == "*":
+        solution = value1 * value2
+        return solution
+    elif operator == "**":
+        solution = value1 / value2
+        return solution
+    elif operator == "/":
+        solution = value1 / value2
+        return solution
+    elif operator == "//":
+        solution = value1 / value2
+        return solution
+    elif operator == "%":
+        solution = value1 % value2
+        return solution
+
+
+# Rozwiązanie 2
+def basic_op(operator, value1, value2):
+    return eval("{}{}{}".format(value1, operator, value2))
+
+
+"""WAŻNE MOŻE SIĘ KIEDYŚ PRZYDAĆ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+The eval function in Python is a built-in function that evaluates
+a string as a Python expression. In this case, the basic_op function
+uses eval to dynamically construct a string representing
+a mathematical expression and then evaluates it to obtain the result."""
 
 #####################################################################################
 ###############   ZADANIE 41      ###################################################
+#####################################################################################
+"""A hero is on his way to the castle to complete his mission. However, he's been told that the castle is surrounded with a couple of powerful dragons! each dragon takes 2 bullets to be defeated, our hero has no idea how many bullets he should carry.. Assuming he's gonna grab a specific given number of bullets and move forward to fight another specific given number of dragons, will he survive?
+
+Return true if yes, false otherwise :)"""
+
+
+# Rozwiązanie
+def hero(bullets, dragons):
+    return True if bullets >= dragons * 2 else False
+
+
+#####################################################################################
+###############   ZADANIE 42      ###################################################
+#####################################################################################
+"""Complete the solution so that it reverses the string passed into it.
+
+'world'  =>  'dlrow'
+'word'   =>  'drow'"""
+
+
+# Rozwiązanie 1
+def solution(string):
+    rev_str = string[::-1]
+    return rev_str
+
+
+# Rozwiązanie 2
+def solution(string):
+    return string[::-1]
+
+
+#####################################################################################
+###############   ZADANIE 43      ###################################################
+#####################################################################################
+"""This time we want to write calculations using functions and get the results. Let's have a look at some examples:
+
+seven(times(five())) # must return 35
+four(plus(nine())) # must return 13
+eight(minus(three())) # must return 5
+six(divided_by(two())) # must return 3
+Requirements:
+
+There must be a function for each number from 0 ("zero") to 9 ("nine")
+There must be a function for each of the following mathematical operations: plus, minus, times, divided_by
+Each calculation consist of exactly one operation and two numbers
+The most outer function represents the left operand, the most inner function represents the right operand
+Division should be integer division. For example, this should return 2, not 2.666666...:
+eight(divided_by(three()))"""
+
+
+# Rozwiązanie 2
+def zero(func=None):
+    return 0 if func is None else func(0)
+
+
+def one(func=None):
+    return 1 if func is None else func(1)
+
+
+def two(func=None):
+    return 2 if func is None else func(2)
+
+
+def three(func=None):
+    return 3 if func is None else func(3)
+
+
+def four(func=None):
+    return 4 if func is None else func(4)
+
+
+def five(func=None):
+    return 5 if func is None else func(5)
+
+
+def six(func=None):
+    return 6 if func is None else func(6)
+
+
+def seven(func=None):
+    return 7 if func is None else func(7)
+
+
+def eight(func=None):
+    return 8 if func is None else func(8)
+
+
+def nine(func=None):
+    return 9 if func is None else func(9)
+
+
+def plus(num):
+    return lambda x: x + num
+
+
+def minus(num):
+    return lambda x: x - num
+
+
+def times(num):
+    return lambda x: x * num
+
+
+def divided_by(num):
+    return lambda x: x // num
+
+
+# Rozwiązanie 2
+def identity(a):
+    return a
+
+
+def zero(f=identity):
+    return f(0)
+
+
+def one(f=identity):
+    return f(1)
+
+
+def two(f=identity):
+    return f(2)
+
+
+def three(f=identity):
+    return f(3)
+
+
+def four(f=identity):
+    return f(4)
+
+
+def five(f=identity):
+    return f(5)
+
+
+def six(f=identity):
+    return f(6)
+
+
+def seven(f=identity):
+    return f(7)
+
+
+def eight(f=identity):
+    return f(8)
+
+
+def nine(f=identity):
+    return f(9)
+
+
+def plus(b):
+    return lambda a: a + b
+
+
+def minus(b):
+    return lambda a: a - b
+
+
+def times(b):
+    return lambda a: a * b
+
+
+def divided_by(b):
+    return lambda a: a // b
+
+
+# Examples
+# print(seven(times(five())))       # Output: 35
+# print(four(plus(nine())))          # Output: 13
+# print(eight(minus(three())))       # Output: 5
+# print(six(divided_by(two())))       # Output: 3
+
+
+#####################################################################################
+###############   ZADANIE 44      ###################################################
 #####################################################################################
