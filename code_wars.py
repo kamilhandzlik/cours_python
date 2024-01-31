@@ -1900,5 +1900,274 @@ def divided_by(b):
 
 
 #####################################################################################
-###############   ZADANIE 44      ###################################################
+###############   ZADANIE 45      ###################################################
+#####################################################################################
+"""Deoxyribonucleic acid (DNA) is a chemical found in the nucleus of cells and carries the "instructions" for the development and functioning of living organisms.
+
+If you want to know more: http://en.wikipedia.org/wiki/DNA
+
+In DNA strings, symbols "A" and "T" are complements of each other, as "C" and "G". Your function receives one side of the DNA (string, except for Haskell); you need to return the other complementary side. DNA strand is never empty or there is no DNA at all (again, except for Haskell).
+
+More similar exercise are found here: http://rosalind.info/problems/list-view/ (source)
+
+Example: (input --> output)
+
+"ATTGC" --> "TAACG"
+"GTAT" --> "CATA"""
+
+
+# Rozwiązanie 1
+def DNA_strand(dna):
+    sec_strand = ""
+    for i in dna:
+        if i == "A":
+            sec_strand += "T"
+        elif i == "T":
+            sec_strand += "A"
+        elif i == "C":
+            sec_strand += "G"
+        elif i == "G":
+            sec_strand += "C"
+
+    return sec_strand
+
+
+# Rozwiązanie 2
+def DNA_strand(dna):
+    complement_dict = {"A": "T", "T": "A", "C": "G", "G": "C"}
+    complement_strand = "".join(complement_dict[n] for n in dna)
+    return complement_strand
+
+
+# Examples
+# print(DNA_strand("ATTGC"))  # Output: "TAACG"
+# print(DNA_strand("GTAT"))   # Output: "CATA"
+
+#####################################################################################
+###############   ZADANIE 46      ###################################################
+#####################################################################################
+"""You are going to be given a word. Your job is to return the middle character of the word. If the word's length is odd, return the middle character. If the word's length is even, return the middle 2 characters.
+
+#Examples:
+
+Kata.getMiddle("test") should return "es"
+
+Kata.getMiddle("testing") should return "t"
+
+Kata.getMiddle("middle") should return "dd"
+
+Kata.getMiddle("A") should return "A"""
+
+
+# Rozwiązanie 1
+def get_middle(s):
+    length = len(s)
+
+    if length % 2 == 1:
+        mid = length // 2
+        result = s[mid]
+
+    else:
+        mid1 = length // 2 - 1
+        mid2 = length // 2
+        result = s[mid1 : mid2 + 1]
+
+    return result
+
+
+# Rozwiązanie 2
+
+#####################################################################################
+###############   ZADANIE 47      ###################################################
+#####################################################################################
+"""Write function RemoveExclamationMarks which removes all exclamation marks from a 
+given string."""
+
+
+# Rozwiązanie 1
+def remove_exclamation_marks(s):
+    if len(s) > 0:
+        result = s.replace("!", "")
+    else:
+        result = s
+
+    return result
+
+
+# Rozwiązanie 2
+def remove_exclamation_marks(s):
+    return s.replace("!", "") if len(s) > 0 else s
+
+
+# Rozwiązanie 3
+def remove_exclamation_marks(s):
+    return s.replace("!", "")
+
+
+#####################################################################################
+###############   ZADANIE 48      ###################################################
+#####################################################################################
+"""Given a random non-negative number, you have to return the digits of this number 
+within an array in reverse order."""
+
+
+# Rozwiązanie 1 -  code wars nie przyjmuje takiego rozwiązania jako poprawne
+def digitize(n):
+    i = str(n)
+    j = i[::-1]
+    k = []
+    k.append("".split)
+    return j
+
+
+# Rozwiązanie 2 - Te rozwiązanie już mu odpowiada
+def digitize(n):
+    return [int(digit) for digit in str(n)[::-1]]
+
+
+#####################################################################################
+###############   ZADANIE 49      ###################################################
+#####################################################################################
+"""Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0. Your function only needs to return the result, what is shown between parentheses in the example below is how you reach that result and it's not part of it, see the sample tests.
+
+For example (Input -> Output):
+
+2 -> 3 (1 + 2)
+8 -> 36 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8)"""
+
+
+# Rozwiązanie 1
+def summation(num):
+    n = 0
+    result = 0
+    for i in range(num):
+        n += 1
+        result += n
+
+    return result
+
+
+# Rozwiązanie 2
+def summation(num):
+    return (num * (num + 1)) // 2
+
+
+#####################################################################################
+###############   ZADANIE 50      ###################################################
+#####################################################################################
+"""After a hard quarter in the office you decide to get some rest on a vacation. So you will book a flight for you and your girlfriend and try to leave all the mess behind you.
+
+You will need a rental car in order for you to get around in your vacation. The manager of the car rental makes you some good offers.
+
+Every day you rent the car costs $40. If you rent the car for 7 or more days, you get $50 off your total. Alternatively, if you rent the car for 3 or more days, you get $20 off your total.
+
+Write a code that gives out the total amount for different days(d)."""
+
+
+# Rozwiązanie 1
+def rental_car_cost(d):
+    cash = 40
+    if d >= 7:
+        cash = d * 40 - 50
+    elif d >= 3:
+        cash = d * 40 - 20
+    elif d > 1:
+        d * 40
+
+    return cash
+
+
+# Rozwiązanie 2
+def rental_car_cost(d):
+    daily_rate = 40
+
+    if d >= 7:
+        return d * daily_rate - 50
+    elif d >= 3:
+        return d * daily_rate - 20
+    else:
+        return d * daily_rate
+
+
+# Rozwiązanie 3
+def rental_car_cost(d):
+    return d * 40 - (d > 2) * 20 - (d > 6) * 30
+
+
+#####################################################################################
+###############   ZADANIE 51      ###################################################
+#####################################################################################
+"""Write a function to split a string and convert it into an array of words.
+
+Examples (Input ==> Output):
+"Robin Singh" ==> ["Robin", "Singh"]
+
+"I love arrays they are my favorite" ==> ["I", "love", "arrays", "they", "are", "my", "favorite"]"""
+
+
+# Rozwiązanie 1
+def string_to_array(s):
+    if not s:
+        return [""]
+
+    words = s.split()
+    return words
+
+
+# Rozwiązanie 2
+def string_to_array(s):
+    return s.split(" ")
+
+
+#####################################################################################
+###############   ZADANIE 52      ###################################################
+#####################################################################################
+"""Given a non-empty array of integers, return the result of multiplying the values together in order. Example:
+
+[1, 2, 3, 4] => 1 * 2 * 3 * 4 = 24"""
+
+
+# Rozwiązanie
+def grow(arr):
+    result = 1
+    for number in arr:
+        result *= number
+    return result
+
+
+#####################################################################################
+###############   ZADANIE 53      ###################################################
+#####################################################################################
+"""Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+
+It should remove all values from list a, which are present in list b keeping their order.
+
+array_diff([1,2],[1]) == [2]
+If a value is present in b, all of its occurrences must be removed from the other:
+
+array_diff([1,2,2,2,3],[2]) == [1,3]"""
+
+
+# Rozwiązanie
+def array_diff(a, b):
+    return [x for x in a if x not in b]
+
+
+#####################################################################################
+###############   ZADANIE 54     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 55      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 56      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 57      ###################################################
 #####################################################################################
