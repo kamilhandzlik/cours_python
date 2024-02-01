@@ -2156,18 +2156,186 @@ def array_diff(a, b):
 #####################################################################################
 ###############   ZADANIE 54     ###################################################
 #####################################################################################
+"""Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained.
+
+Examples
+"This is an example!" ==> "sihT si na !elpmaxe"
+"double  spaces"      ==> "elbuod  secaps"""
+
+
+def reverse_words(string):
+    words = string.split(" ")
+    reversed_words = [word[::-1] for word in words]
+    reversed_string = " ".join(reversed_words)
+    return reversed_string
 
 
 #####################################################################################
 ###############   ZADANIE 55      ###################################################
 #####################################################################################
+"""In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+
+Examples
+high_and_low("1 2 3 4 5")  # return "5 1"
+high_and_low("1 2 -3 4 5") # return "5 -3"
+high_and_low("1 9 3 4 -5") # return "9 -5"""
+
+
+# Rozwiązanie 1
+def high_and_low(numbers):
+    a = numbers.split(" ")
+    sol = []
+    result = ""
+    for i in a:
+        j = int(i)
+        sol.append(j)
+
+    ma = max(sol)
+    mi = min(sol)
+    result = f"{str(ma)} {str(mi)}"
+
+    return result
+
+
+# Rozwiązanie 2
+def high_and_low(numbers):
+    num_list = list(map(int, numbers.split()))
+    max_num = str(max(num_list))
+    min_num = str(min(num_list))
+    return f"{max_num} {min_num}"
 
 
 #####################################################################################
 ###############   ZADANIE 56      ###################################################
 #####################################################################################
+"""In this simple assignment you are given a number and have to make it negative. But maybe the number is already negative?
+
+Examples
+make_negative(1);  # return -1
+make_negative(-5); # return -5
+make_negative(0);  # return 0"""
+
+
+# Rozwiązanie 1
+def make_negative(number):
+    return number * (-1) if number > 0 else number
+
+
+# Rozwiązanie 2
+def make_negative(number):
+    return -abs(number)
 
 
 #####################################################################################
 ###############   ZADANIE 57      ###################################################
+#####################################################################################
+"""Your task is to construct a building which will be a pile of n cubes. The cube at the bottom will have a volume of 
+ , the cube above will have volume of 
+
+  and so on until the top which will have a volume of 
+
+You are given the total volume m of the building. Being given m can you find the number n of cubes you will have to build?
+
+The parameter of the function findNb (find_nb, find-nb, findNb, ...) will be an integer m and you have to return the integer n such as 
+
+ =m if such a n exists or -1 if there is no such n.
+
+Examples:
+findNb(1071225) --> 45
+
+findNb(91716553919377) --> -1"""
+
+
+# Rozwiązanie
+def find_nb(m):
+    current = 0
+    n = 1
+    while current < m:
+        current += n**3
+        n += 1
+
+    if current == m:
+        return n - 1
+    else:
+        return -1
+
+
+#####################################################################################
+###############   ZADANIE 58      ###################################################
+#####################################################################################
+"""Given a string of words, you need to find the highest scoring word.
+
+Each letter of a word scores points according to its position in the alphabet: a = 1, b = 2, c = 3 etc.
+
+For example, the score of abad is 8 (1 + 2 + 1 + 4).
+
+You need to return the highest scoring word as a string.
+
+If two words score the same, return the word that appears earliest in the original string.
+
+All letters will be lowercase and all inputs will be valid."""
+
+
+# Rozwiązanie
+def high(x):
+    alph = {
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": 4,
+        "e": 5,
+        "f": 6,
+        "g": 7,
+        "h": 8,
+        "i": 9,
+        "j": 10,
+        "k": 11,
+        "l": 12,
+        "m": 13,
+        "n": 14,
+        "o": 15,
+        "p": 16,
+        "q": 17,
+        "r": 18,
+        "s": 19,
+        "t": 20,
+        "u": 21,
+        "v": 22,
+        "w": 23,
+        "x": 24,
+        "y": 25,
+        "z": 26,
+    }
+
+    max_word = ""
+    max_score = 0
+
+    words = x.split()
+
+    for word in words:
+        current_score = sum(alph[letter] for letter in word)
+
+        if current_score > max_score:
+            max_score = current_score
+            max_word = word
+
+    return max_word
+
+
+#####################################################################################
+###############   ZADANIE 59      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 60      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 61      ###################################################
+#####################################################################################
+
+#####################################################################################
+###############   ZADANIE 62      ###################################################
 #####################################################################################
