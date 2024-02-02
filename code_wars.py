@@ -2325,17 +2325,106 @@ def high(x):
 #####################################################################################
 ###############   ZADANIE 59      ###################################################
 #####################################################################################
+"""There is an array with some numbers. All numbers are equal except for one. Try to find it!
+
+find_uniq([ 1, 1, 1, 2, 1, 1 ]) == 2
+find_uniq([ 0, 0, 0.55, 0, 0 ]) == 0.55
+It’s guaranteed that array contains at least 3 numbers.
+
+The tests contain some very huge arrays, so think about performance."""
+
+
+# Rozwiązanie 1
+def find_uniq(arr):
+    unique = set(arr)
+    n = 0
+    for i in unique:
+        if arr.count(i) == 1:
+            n += i
+    return n
+
+
+# Rozwiązanie 2
+def find_uniq(arr):
+    i, n = set(arr)
+    return i if arr.count(i) == 1 else n
 
 
 #####################################################################################
 ###############   ZADANIE 60      ###################################################
 #####################################################################################
+"""Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
+
+invert([1,2,3,4,5]) == [-1,-2,-3,-4,-5]
+invert([1,-2,3,-4,5]) == [-1,2,-3,4,-5]
+invert([]) == []
+You can assume that all values are integers. Do not mutate the input array/list."""
+
+
+# Rozwiązanie 1
+def invert(lst):
+    result = []
+    for i in lst:
+        i *= -1
+        result.append(i)
+    return result
+
+
+# Rozwiązanie 2
+def invert(lst):
+    return [i * -1 for i in lst]
 
 
 #####################################################################################
 ###############   ZADANIE 61      ###################################################
 #####################################################################################
+"""You are given the length and width of a 4-sided polygon. The polygon can either be a rectangle or a square.
+If it is a square, return its area. If it is a rectangle, return its perimeter.
+
+Example(Input1, Input2 --> Output):
+
+6, 10 --> 32
+3, 3 --> 9
+Note: for the purposes of this kata you will assume that it is a square if
+ its length and width are equal, otherwise it is a rectangle"""
+
+
+# Rozwiązanie 1
+def area_or_perimeter(l, w):
+    result = 0
+    if l != w:
+        result += 2 * l + 2 * w
+    else:
+        result += l**2
+
+    return result
+
+
+# Rozwiązanie 2
+def area_or_perimeter(l, w):
+    return (2 * l + 2 * w) if l != w else l**2
+
 
 #####################################################################################
 ###############   ZADANIE 62      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 63      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 64      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 65      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 66      ###################################################
 #####################################################################################
