@@ -41,34 +41,34 @@ def add_desk():
 def delete_desk():
     desks_instances = load_desks_from_file("desks.json")
 
-    print("Aktualne Biurka:")
-    for idx, (key, desk) in enumerate(desks_instances.items()):
-        print(f"{idx + 1}. {desk['name']}")
+    print("Akturalne biurka:")
+    for desk in desks_instances.values():
+        print(f"Id: {desk.idx}. {desk.name}, {json.dumps(desk.to_dict(), indent=2)} ")
 
     if not desks_instances:
-        print("Brak dostępnych biurek do usunięcia.")
+        print("Brak dostępnych biurek do usunięcia!")
         return
 
     try:
-        del_desk_idx = int(input(
-            "Podaj numer biurka do usunięcia (lub wpisz -1, aby anulować): "
-        )) - 1
+        del_desk_name = input("Podaj indeks biurka do usunięcia (lub wpisz -1, żeby anulować): ")
 
-        if del_desk_idx == -1:
+        if del_desk_name == "-1":
             print("Anulowano usunięcie.")
             return
 
-        if 0 <= del_desk_idx < len(desks_instances):
-            deleted_desk_name = list(desks_instances.keys())[del_desk_idx]
-            desks_instances.pop(deleted_desk_name)
-            print(f"Usunięto biurko: {deleted_desk_name}")
+        if del_desk_name in desks_instances:
+            desks_instances.pop(del_desk_name)
+            print(f"Usunięto biurko: {del_desk_name}")
+
         else:
-            print("Nieprawidłowy numer biurka. Nie usunięto żadnego biurka.")
+            print("Nieprawidłowa nazwa biurka. Nie usunięto żadnego biurka.")
 
         save_desks_to_file(desks_instances)
 
     except ValueError:
-        print("Nieprawidłowe dane wejściowe. Podaj prawidłowy numer biurka.")
+        print("Nieprawidłowe dane wejściowe. Podaj prawidłową nazwę biurka.")
+
+
 
 
 def save_desks_to_file(desks_instances):
