@@ -2489,6 +2489,137 @@ def check(a, x):
 #####################################################################################
 ###############   ZADANIE 65      ###################################################
 #####################################################################################
+"""Given a list of integers, determine whether the sum of its elements is odd or even.
+
+Give your answer as a string matching "odd" or "even".
+
+If the input array is empty consider it as: [0] (array with a zero)."""
+
+
+# Rozwiązanie 1
+def odd_or_even(arr):
+    a = sum(arr)
+    if a % 2 != 0:
+        return "odd"
+    else:
+        return "even"
+
+
+# Rozwiązanie 2
+def odd_or_even(arr):
+    return "odd" if sum(arr) % 2 != 0 else "even"
+
+
+#####################################################################################
+###############   ZADANIE 66      ###################################################
+#####################################################################################
+"""You are given two interior angles (in degrees) of a triangle.
+
+Write a function to return the 3rd.
+
+Note: only positive integers will be tested."""
+
+
+# Rozwiązanie 1
+def other_angle(a, b):
+    solution = 180 - (a + b)
+    return solution
+
+
+# Rozwiązanie 2
+def other_angle(a, b):
+    return 180 - (a + b)
+
+
+#####################################################################################
+###############   ZADANIE 66      ###################################################
+#####################################################################################
+"""Complete the method that takes a boolean value and return a "Yes" string for true,
+ or a "No" string for false."""
+
+
+# Rozwiązanie 1
+def bool_to_word(boolean):
+    if boolean == True:
+        return "Yes"
+    else:
+        return "No"
+
+
+# Rozwiązanie 2
+def bool_to_word(boolean):
+    return "Yes" if boolean == True else "No"
+
+
+#####################################################################################
+###############   ZADANIE 66      ###################################################
+#####################################################################################
+"""Given two arrays a and b write a function comp(a, b) (orcompSame(a, b)) that checks whethe
+r the two arrays have the "same" elements, with the same multiplicities (the multiplicity of a member
+ is the number of times it appears). "Same" means, here, that the elements in b are the elements in a squared,
+ regardless of the order."""
+
+
+# Rozwiązanie 1
+def comp(array1, array2):
+    if array1 is None or array2 is None:
+        return False
+
+    return sorted([x**2 for x in array1]) == sorted(array2)
+
+
+# Rozwiązanie 2
+def comp(array1, array2):
+    try:
+        return sorted([i**2 for i in array1]) == sorted(array2)
+    except:
+        return False
+
+
+#####################################################################################
+###############   ZADANIE 66      ###################################################
+#####################################################################################
+"""Your task is to make two functions ( max and min, or maximum and minimum, etc.,
+ depending on the language ) that receive a list of integers as input, and return the
+ largest and lowest number in that list, respectively."""
+
+
+# Rozwiązanie
+def minimum(arr):
+    return min(arr)
+
+
+def maximum(arr):
+    return max(arr)
+
+
+#####################################################################################
+###############   ZADANIE 66      ###################################################
+#####################################################################################
+"""In this simple Kata your task is to create a function that turns a string into a Mexican Wave.
+ You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up. """
+""" 1.  The input string will always be lower case but maybe empty.
+
+ 2.  If the character in the string is whitespace then pass over it as if it was an empty seat
+  
+   Example
+wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"] """
+
+
+# Rozwiązanie
+def wave(people):
+    result = []
+
+    for i in range(len(people)):
+        if people[i].isalpha():
+            result.append(people[:i] + people[i].upper() + people[i + 1 :])
+
+    return result
+
+
+#####################################################################################
+###############   ZADANIE 66      ###################################################
+#####################################################################################
 
 
 #####################################################################################
