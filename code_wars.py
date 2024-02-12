@@ -2620,8 +2620,131 @@ def wave(people):
 #####################################################################################
 ###############   ZADANIE 66      ###################################################
 #####################################################################################
+"""Given a month as an integer from 1 to 12, return to which quarter of the year it belongs as an integer number.
+
+For example: month 2 (February), is part of the first quarter; month 6 (June), is part of the second quarter; and month 11 (November), is part of the fourth quarter."""
+
+
+# Rozwiązanie 1 - kod łatwiejszy do zrozumienia
+def quarter_of(month):
+    if month <= 3:
+        return 1
+    elif month <= 6:
+        return 2
+    elif month <= 9:
+        return 3
+    elif month <= 12:
+        return 4
+    else:
+        return ValueError
+
+
+# Rozwiązanie 2
+def quarter_of(month):
+    return (month - 1) // 3 + 1
 
 
 #####################################################################################
-###############   ZADANIE 66      ###################################################
+###############   ZADANIE 67      ###################################################
+#####################################################################################
+"""Create a function which answers the question "Are you playing banjo?".
+If your name starts with the letter "R" or lower case "r", you are playing banjo!
+
+The function takes a name as its only argument, and returns one of the following strings:
+
+name + " plays banjo" 
+name + " does not play banjo"""
+
+
+# Rozwiązanie - 1
+def are_you_playing_banjo(name):
+    if name[0] == "r" or name[0] == "R":
+        return f"{name} plays banjo"
+    else:
+        return f"{name} does not play banjo"
+
+
+# Rozwiązanie - 2
+def are_you_playing_banjo(name):
+    return (
+        f"{name} plays banjo"
+        if name[0] == "r" or name[0] == "R"
+        else f"{name} does not play banjo"
+    )
+
+
+# Rozwiązanie - 3 - Dobra bardzij już chyba tego nie uproszczę :)
+def are_you_playing_banjo(name):
+    return (
+        f"{name} plays banjo"
+        if name[0].lower() == "r"
+        else f"{name} does not play banjo"
+    )
+
+
+#####################################################################################
+###############   ZADANIE 68      ###################################################
+#####################################################################################
+"""Very simple, given a number (integer / decimal / both depending on the language), find its opposite (additive inverse).
+
+Examples:
+
+1: -1
+14: -14
+-34: 34"""
+
+
+# Rozwiązanie
+def opposite(number):
+    return number * (-1)
+
+
+#####################################################################################
+###############   ZADANIE 69      ###################################################
+#####################################################################################
+"""Write a function which converts the input string to uppercase."""
+
+
+# Rozwiązanie 1 - the fuck i get today? - lvl 8 kyu kata as if! Ha tfu
+def make_upper_case(s):
+    return s.upper()
+
+
+#####################################################################################
+###############   ZADANIE 70      ###################################################
+#####################################################################################
+"""Simple, given a string of words, return the length of the shortest word(s).
+
+String will never be empty and you do not need to account for different data types."""
+
+
+# Rozwiązanie - 1 - now it get better
+def find_short(s):
+    words = s.split()
+    min_length = min(len(word) for word in words)
+    return min_length
+
+
+# Rozwiązanie - 2
+def find_short(s):
+    return min(len(x) for x in s.split())
+
+
+#####################################################################################
+###############   ZADANIE 71      ###################################################
+#####################################################################################
+"""Code as fast as you can! You need to double the integer and return it."""  # kek
+
+
+def double_integer(i):
+    return i * 2
+
+
+#####################################################################################
+###############   ZADANIE 72      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 73      ###################################################
 #####################################################################################
