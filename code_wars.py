@@ -2743,8 +2743,144 @@ def double_integer(i):
 #####################################################################################
 ###############   ZADANIE 72      ###################################################
 #####################################################################################
+"""Story
+Ben has a very simple idea to make some profit: he buys something and sells it again. Of course, this wouldn't give him any profit at all if he was simply to buy and sell it at the same price. Instead, he's going to buy it for the lowest possible price and sell it at the highest.
+
+Task
+Write a function that returns both the minimum and maximum number of the given list/array."""
+
+
+# Rozwiązanie 1
+def min_max(lst):
+    min_max = [min(lst), max(lst)]
+    return min_max
+
+
+# Rozwiązanie 2
+def min_max(lst):
+    return [min(lst), max(lst)]
 
 
 #####################################################################################
 ###############   ZADANIE 73      ###################################################
+#####################################################################################
+"""Rock Paper Scissors
+Let's play! You have to return which player won! In case of a draw return Draw!.
+
+Examples(Input1, Input2 --> Output):
+
+"scissors", "paper" --> "Player 1 won!"
+"scissors", "rock" --> "Player 2 won!"
+"paper", "paper" --> "Draw!"""
+
+
+# Rozwiązanie 1
+def rps(p1, p2):
+    if p1 == "scissors" and p2 == "paper":
+        return "Player 1 won!"
+    elif p2 == "scissors" and p1 == "paper":
+        return "Player 2 won!"
+    elif p1 == "rock" and p2 == "scissors":
+        return "Player 1 won!"
+    elif p2 == "rock" and p1 == "scissors":
+        return "Player 2 won!"
+    elif p1 == "paper" and p2 == "rock":
+        return "Player 1 won!"
+    elif p2 == "paper" and p1 == "rock":
+        return "Player 1 won!"
+    else:
+        return "Draw!"
+
+
+# Rozwiązanie 2
+def rps(p1, p2):
+    if p1 == p2:
+        return "Draw!"
+    elif (
+        (p1 == "rock" and p2 == "scissors")
+        or (p1 == "scissors" and p2 == "paper")
+        or (p1 == "paper" and p2 == "rock")
+    ):
+        return "Player 1 won!"
+    else:
+        return "Player 2 won!"
+
+
+#####################################################################################
+###############   ZADANIE 74      ###################################################
+#####################################################################################
+"""You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the even numbers at their original positions.
+
+Examples
+[7, 1]  =>  [1, 7]
+[5, 8, 6, 3, 4]  =>  [3, 8, 6, 5, 4]
+[9, 8, 7, 6, 5, 4, 3, 2, 1, 0]  """
+
+
+# Rozwiązanie 1
+def sort_array(source_array):
+
+    odds = []
+    answer = []
+
+    for i in source_array:
+        if i % 2 > 0:
+            odds.append(i)
+            answer.append("X")
+
+        else:
+            answer.append(i)
+
+    odds.sort()
+
+    for i in odds:
+        x = answer.index("X")
+        answer[x] = i
+    return answer
+
+
+# Rozwiązanie 2
+def sort_array(source_array):
+    # Wyciągam liczby nie parzyste z source array
+    odd_numbers = sorted(x for x in source_array if x % 2 != 0)
+
+    # zamieniam posortowane liczby nieparzyste w miejsca wcześniej występujących liczb nieparzystych
+    result = [x if x % 2 == 0 else odd_numbers.pop(0) for x in source_array]
+
+    return result
+
+
+#####################################################################################
+###############   ZADANIE 75      ###################################################
+#####################################################################################
+"""Write a function which calculates the average of the numbers in a given list.
+
+Note: Empty arrays should return 0."""
+
+
+# Ropwiązanie - 1
+def find_average(numbers):
+    if numbers == []:
+        return 0
+    else:
+        return sum(numbers) / len(numbers)
+
+
+# Rozwiązanie 2
+def find_average(numbers):
+    return 0 if numbers == [] else sum(numbers) / len(numbers)
+
+
+#####################################################################################
+###############   ZADANIE 76      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 77      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 78      ###################################################
 #####################################################################################
