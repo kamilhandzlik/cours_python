@@ -1,4 +1,9 @@
-# Wzorzec projektowy builder
+#####################################################################################
+###############   BUILDER      ###################################################
+#####################################################################################
+
+
+# Wzorzec projektowy Builder
 from typing import Optional
 
 
@@ -95,3 +100,149 @@ GET_ENDPOINTS["/shop"] = {
 
 print(GET_ENDPOINTS["/home"])
 print(GET_ENDPOINTS["/shop"])
+
+
+#####################################################################################
+###############   FACTORY      ###################################################
+#####################################################################################
+# Wzorzec projektowy Fabryka
+
+
+# Krok 1 Definiujemy interfejs, który chcemy stworzyć
+# Interfejs Product z diagramu UML
+class Computer:
+    ram_size: int = 0
+
+    def power_on(self):
+        raise NotImplementedError
+
+    def power_off(self):
+        raise NotImplementedError
+
+
+# Krok 2 - Konkretne klasy o podobnych zachowaniach
+# Concrete Product 1
+class Laptop(Computer):
+    ram_size = 4096
+
+    def power_on(self):
+        return "Laptop powered on"
+
+    def power_off(self):
+        return "Laptop powered off"
+
+
+# Concrete Product 2
+class PC(Computer):
+    ram_size = 8192
+
+    def power_on(self):
+        return "PC powered on"
+
+    def power_off(self):
+        return "PC powered off"
+
+
+# Krok 3 - Implementujemy fabryki wersja 1 i 2 "WAŻNE!!" MUSZĄ ZAWIERAĆ METODĘ """create """
+# To jest interfejs Product Factory z diagramu UML
+class ComputerFactory:
+    def create(self) -> "Computer":
+        raise NotImplementedError
+
+
+# To jest Product 1 Factory z diagramu UML
+class LaptopFactory(ComputerFactory):
+    def create(self) -> Computer:
+        print("Tworzy Laptop")
+        return Laptop()
+
+
+# To jest Product 2 Factory z diagramu UML
+class PCFactory(ComputerFactory):
+    def create(self) -> Computer:
+        print("Tworzy PC")
+        return PC()
+
+
+# Krok 4 implementujemy konkretny produkt
+# Tworzymy słownik, który będzie przechowywał nam nasze fabryki
+COMPUTER_FACTORIES = {"PC": PCFactory, "Laptop": LaptopFactory}
+
+# Jeśli chcemy użyć naszej fabryki tutaj przychodzi nam request
+# użytkownik chce stworzyć PC
+request = {"create": "PC"}
+
+# Wiedząc, że wszystkie fabryki mają ten sam interfejs odzyskujemy ze słownika
+# to co użytkownik przesłał nam w zapytaniu
+
+computer_to_make = request["create"]
+# na podstawie requesta tworzymy instancję dla użytkownika za pomocą metody create
+COMPUTER_FACTORIES[computer_to_make].create
+
+
+# WZORCE BEHAWIORALNE
+# BEHAVIOURAL DESIGN PATTERNS
+
+#####################################################################################
+###############   STRATEGY       ###################################################
+#####################################################################################
+# Wzorzec projektowy Strategy
+
+
+# Przykład dla dzielenia rachunków w restauracji na podstawie ilości ludzi
+
+
+# Krok 1 deinicja interfejsu strategi i konkretnych klas
+# Interfejs
+class BillingStrategy:
+    def calculate(self, amount):
+        raise NotImplementedError
+
+
+# Konkretna klasa 1
+class OverTenPeopleBillingStrategy(BillingStrategy):
+    def calculate(self, amount):
+        # tutaj dolicz 10% do rachunku gdy jest więcej niż 10 ludzi do zapłaty
+        return amount * 1.1
+
+
+# Konkretna klasa 2
+class NormaBillingStrategy(BillingStrategy):
+    def calculate(self, amount):
+        # zwykła płatność bez promocji
+        return amount
+
+
+# Konkretna klasa 3
+class OwnerBillingStrategy(BillingStrategy):
+    def calculate(self, amount):
+        # Właściciel za nic nie płaci
+        return 0
+
+
+# Krok 2
+# Definicja kontekstu
+class BillingContext:
+    def __init__(self):
+        self._strategy: BillingContext = NormaBillingStrategy()
+
+    def set_strategy(self, Strategy: BillingStrategy):
+        self._strategy = Strategy()
+
+    def calculate(self, amount):
+        return self._strategy.calculate(amount)
+
+
+# Krok 3
+# Wymagany jest tylko jeden kontekst
+billing_context = BillingContext()
+
+# Zmieniaj w zależności od wymaganej sytuacji
+billing_context.set_strategy(NormaBillingStrategy)
+billing_context.calculate()
+
+billing_context.set_strategy(OwnerBillingStrategy)
+billing_context.calculate()
+
+billing_context.set_strategy(OverTenPeopleBillingStrategy)
+billing_context.calculate()
