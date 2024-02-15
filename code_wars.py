@@ -2853,6 +2853,7 @@ def sort_array(source_array):
 #####################################################################################
 ###############   ZADANIE 75      ###################################################
 #####################################################################################
+
 """Write a function which calculates the average of the numbers in a given list.
 
 Note: Empty arrays should return 0."""
@@ -2874,13 +2875,112 @@ def find_average(numbers):
 #####################################################################################
 ###############   ZADANIE 76      ###################################################
 #####################################################################################
+"""In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+
+Example
+filter_list([1,2,'a','b']) == [1,2]
+filter_list([1,'a','b',0,15]) == [1,0,15]
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123"""
+
+
+# Rozwiązanie
+def filter_list(l):
+    result_list = []
+    for element in l:
+        if isinstance(element, (int, float)):
+            result_list.append(element)
+    return result_list
 
 
 #####################################################################################
 ###############   ZADANIE 77      ###################################################
 #####################################################################################
+"""Your task is to make a function that can take any non-negative integer as an argument and return it with its digits in descending order. Essentially, rearrange the digits to create the highest possible number.
+
+Examples:
+Input: 42145 Output: 54421
+
+Input: 145263 Output: 654321
+
+Input: 123456789 Output: 987654321"""
+
+
+# Rozwiązanie
+def descending_order(num):
+    if num >= 0:
+        result = int(
+            "".join(sorted(str(num), reverse=True))
+        )  # To jest całkiem fajny trik PAMIĘTAJ GO DZIADU
+        return result
 
 
 #####################################################################################
 ###############   ZADANIE 78      ###################################################
+#####################################################################################
+"""Create a function with two arguments that will return an array of the first n multiples of x.
+
+Assume both the given number and the number of times to count will be positive numbers greater than 0.
+
+Return the results as an array or list ( depending on language ).
+
+Examples
+count_by(1,10) #should return [1,2,3,4,5,6,7,8,9,10]
+count_by(2,5) #should return [2,4,6,8,10]"""
+
+
+# Rozwiązanie 1
+def count_by(x, n):
+    result = []
+    num = x
+    for i in range(n):
+        num = x * (i + 1)
+        result.append(num)
+    return result
+
+
+# Rozwiązanie 2
+def count_by(x, n):
+    result = []
+    for i in range(1, n + 1):
+        result.append(x * i)
+    return result
+
+
+# Rozwiązanie 3 -  to nie jest moje ale uznaję je wartym zapisania
+def count_by(x, n):
+    return list(range(x, n * x + 1, x))
+
+
+#####################################################################################
+###############   ZADANIE 79      ###################################################
+#####################################################################################
+"""You ask a small girl,"How old are you?" She always says, "x years old", where x is a random number between 0 and 9.
+Write a program that returns the girl's age (0-9) as an integer.
+Assume the test input string is always a valid string. For example, the test input may be "1 year old" or "5 years old".
+ The first character in the string is always a number."""
+
+
+# Rozwiązanie 1
+def get_age(age):
+    age_number = int("".join(char for char in age if char.isdigit()))
+    return age_number
+
+
+# Rozwiązanie - 2
+def get_age(age):
+    return int(age[0])
+
+
+#####################################################################################
+###############   ZADANIE 80      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 81      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 82      ###################################################
 #####################################################################################
