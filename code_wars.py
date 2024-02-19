@@ -2974,13 +2974,157 @@ def get_age(age):
 #####################################################################################
 ###############   ZADANIE 80      ###################################################
 #####################################################################################
+"""Write a function that takes an array of numbers and returns the sum of the numbers. The numbers can be negative or non-integer. If the array does not contain any numbers then you should return 0.
+
+Examples
+Input: [1, 5.2, 4, 0, -1]
+Output: 9.2
+
+Input: []
+Output: 0
+
+Input: [-2.398]
+Output: -2.398
+
+Assumptions"""
+
+
+# Rozwiązanie
+def sum_array(a):
+    return 0 if a == [] else sum(a)
 
 
 #####################################################################################
 ###############   ZADANIE 81      ###################################################
 #####################################################################################
+"""Welcome.
+
+In this kata you are required to, given a string, replace every letter with its position in the alphabet.
+
+If anything in the text isn't a letter, ignore it and don't return it.
+
+"a" = 1, "b" = 2, etc.
+
+Example
+alphabet_position("The sunset sets at twelve o' clock.")
+Should return "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11" ( as a string )
+
+"""
+
+
+# Rozwiązanie - 1 = moje
+def alphabet_position(text):
+    alph = {
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "d": 4,
+        "e": 5,
+        "f": 6,
+        "g": 7,
+        "h": 8,
+        "i": 9,
+        "j": 10,
+        "k": 11,
+        "l": 12,
+        "m": 13,
+        "n": 14,
+        "o": 15,
+        "p": 16,
+        "q": 17,
+        "r": 18,
+        "s": 19,
+        "t": 20,
+        "u": 21,
+        "v": 22,
+        "w": 23,
+        "x": 24,
+        "y": 25,
+        "z": 26,
+    }
+
+    new_text = []
+
+    for char in text:
+        if char.isalpha():
+            char_lower = char.lower()
+            new_text.append(str(alph[char_lower]))
+
+    return " ".join(new_text)
+
+
+# Rozwiązanie 2 to akurat zerżnąłem bezczelnie ale dałem do zapisania jak to można zrobić prościej
+def alphabet_position(text):
+    return " ".join(str(ord(c) - 96) for c in text.lower() if c.isalpha())
 
 
 #####################################################################################
 ###############   ZADANIE 82      ###################################################
+#####################################################################################
+"""Task:
+Your task is to write a function which returns the sum of following series upto nth term(parameter).
+
+Series: 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16 +...
+Rules:
+You need to round the answer to 2 decimal places and return it as String.
+
+If the given value is 0 then it should return 0.00
+
+You will only be given Natural Numbers as arguments.
+
+Examples:(Input --> Output)
+1 --> 1 --> "1.00"
+2 --> 1 + 1/4 --> "1.25"
+5 --> 1 + 1/4 + 1/7 + 1/10 + 1/13 --> "1.57"""
+
+
+# Rozwiązanie 1 - nie do końca udane jet to bardziej test czy dobrze myślę
+def series_sum(n):
+    num1 = 1
+    num2 = 1 / 4
+    num3 = 1 / 3
+    result = 0
+    add = 0
+    if n == 1:
+        return "1.00"
+    elif n == 2:
+        result += num1 + num2
+        return str(result)
+    elif n == 3:
+        result += num1 + num2 + num3
+        return str(result)
+    else:
+        for i in range(n):
+            add += num1 + num2 + num3
+            result += add + num3 * n
+            return str(result)
+
+
+# Rozwiązanie 2 - to już jest końcowy etap tego co miałem zrobić
+def series_sum(n):
+    result = 0.0
+    denominator = 1.0
+    for i in range(n):
+        result += 1 / denominator
+        denominator += 3
+    return "{:.2f}".format(result)
+
+
+#####################################################################################
+###############   ZADANIE 83      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 84      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 85      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 86      ###################################################
 #####################################################################################
