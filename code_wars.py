@@ -3113,18 +3113,134 @@ def series_sum(n):
 #####################################################################################
 ###############   ZADANIE 83      ###################################################
 #####################################################################################
+"""Given an array of integers your solution should find the smallest integer.
+
+For example:
+
+Given [34, 15, 88, 2] your solution will return 2
+Given [34, -345, -1, 100] your solution will return -345
+You can assume, for the purpose of this kata, that the supplied array will not be empty."""
+
+
+# Rozwiązanie 1
+def find_smallest_int(arr):
+    result = min(arr)
+    return result
+
+
+# Rozwiązanie 2
+def find_smallest_int(arr):
+    return min(arr)
 
 
 #####################################################################################
 ###############   ZADANIE 84      ###################################################
 #####################################################################################
+"""Complete the square sum function so that it squares each number passed into it and then sums the results together.
+
+For example, for [1, 2, 2] it should return 9 because 
+1^2+2^2+2^2=91"""
+
+
+# Rozwiązanie 1
+def square_sum(numbers):
+    result = 0
+    for i in numbers:
+        result += i**2
+
+    return result
+
+
+# Rozwiązanie 2
+def square_sum(numbers):
+    return sum(x**2 for x in numbers)
 
 
 #####################################################################################
 ###############   ZADANIE 85      ###################################################
 #####################################################################################
+"""Count the number of divisors of a positive integer n.
+
+Random tests go up to n = 500000.
+
+Examples (input --> output)
+4 --> 3 // we have 3 divisors - 1, 2 and 4
+5 --> 2 // we have 2 divisors - 1 and 5
+12 --> 6 // we have 6 divisors - 1, 2, 3, 4, 6 and 12
+30 --> 8 // we have 8 divisors - 1, 2, 3, 5, 6, 10, 15 and 30
+Note you should only return a number, the count of divisors. The numbers between parentheses are shown
+ only for you to see which numbers are counted in each case."""
+
+
+# Rozwiązanie 1
+def divisors(n):
+    result = 0
+    for j in range(1, 500000):
+        if n % j != 0:
+            result += 0
+        else:
+            result += 1
+
+    return result
+
+
+# Rozwiązanie 2
+def divisors(n):
+    return len([l_div for l_div in range(1, n + 1) if n % l_div == 0])
 
 
 #####################################################################################
 ###############   ZADANIE 86      ###################################################
+#####################################################################################
+"""The Western Suburbs Croquet Club has two categories of membership, Senior and Open. They would like your help with an application form that will tell prospective members which category they will be placed.
+
+To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+
+Input
+Input will consist of a list of pairs. Each pair contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
+
+Output
+Output will consist of a list of string values (in Haskell and C: Open or Senior) stating whether the respective member is to be placed in the senior or open category.
+
+Example
+input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
+output = ["Open", "Open", "Senior", "Open", "Open", "Senior"]"""
+
+
+# Rozwiązanie 1
+def open_or_senior(data):
+    result = []
+    for i in data:
+        if i[0] >= 55 and i[1] > 7:
+            result.append("Senior")
+        else:
+            result.append("Open")
+
+    return result
+
+
+# Rozwiązanie 2
+def open_or_senior(data):
+    return [
+        "Senior" if age >= 55 and handicap > 7 else "Open" for age, handicap in data
+    ]
+
+
+#####################################################################################
+###############   ZADANIE 87      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 88      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 89      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 90      ###################################################
 #####################################################################################
