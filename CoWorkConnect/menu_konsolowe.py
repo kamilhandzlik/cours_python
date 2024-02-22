@@ -1,39 +1,6 @@
+from class_reservation_with_cancel import *
 from desk import *
-from desk_manager import DeskManager
-import json
-
-
-def delete_desk():
-    desks_instances = load_desks_from_file("desks.json")
-
-    print("Akturalne biurka:")
-    for desk in desks_instances.values():
-        print(f"Id: {desk.name}, {json.dumps(desk.to_dict(), indent=2)} ")
-
-    if not desks_instances:
-        print("Brak dostępnych biurek do usunięcia!")
-        return
-
-    try:
-        del_desk_name = input(
-            "Podaj indeks biurka do usunięcia (lub wpisz -1, żeby anulować): "
-        )
-
-        if del_desk_name == "-1":
-            print("Anulowano usunięcie.")
-            return
-
-        if del_desk_name in desks_instances:
-            desks_instances.pop(del_desk_name)
-            print(f"Usunięto biurko: {del_desk_name}")
-
-        else:
-            print("Nieprawidłowa nazwa biurka. Nie usunięto żadnego biurka.")
-
-        save_desks_to_file(desks_instances)
-
-    except ValueError:
-        print("Nieprawidłowe dane wejściowe. Podaj prawidłową nazwę biurka.")
+from desk_manager import DeskAdder, DeskDeleter
 
 
 def customer_board():
@@ -44,24 +11,44 @@ def customer_board():
         user_choice = input("Wybierz opcję wybierając odpowiednią cyfrę:")
 
         if user_choice == "1":
-            print("1. NASZA OFERTA")
+            with open("oferta_biura.json", "r") as file:
+                offer = json.load(file)
+                for key, value in offer.items():
+                    print(value)
+            print(input("POWRÓT DO MENU KLIENTA - NACIŚNIJ ENTER"))
         elif user_choice == "2":
-            print("2. SZCZEGÓŁOWE SPECYFIKACJE ORAZ CENNIK USŁUG")
+
+            desks_instances = load_desks_from_file("desks.json")
+
+            print(
+                "\n",
+                "Szczegółowe specyfikacje oraz cennik biurek (lista zawiera wszystkie dostępne biurka):",
+            )
+            for desk in desks_instances.values():
+                print(
+                    f" Numer {desk.name} - rodzaj: {desk.desk_type}, cena: {desk.price} PLN, status: {desk.status}"
+                )
+            print(input("POWRÓT DO MENU KLIENTA - NACIŚNIJ ENTER"))
         elif user_choice == "3":
             print("3. DOSTĘPNOŚĆ BIUREK/STANOWISK")
         elif user_choice == "4":
-            print("4. REZERWACJA BIURKA")
+            ReservationManager()
+            DeskManager()
+            ClientDataManager()
         elif user_choice == "5":
-            print("5. ANULOWANIE REZERWACJI")
+            ReservationCanceler.cancel_reservation()
         elif user_choice == "6":
-            print("6. DANE KONTAKTOWE BIURA")
+            with open("dane_kontaktowe.json", "r") as file:
+                offer = json.load(file)
+                for key, value in offer.items():
+                    print(value)
+            print(input("POWRÓT DO MENU KLIENTA - NACIŚNIJ ENTER"))
         elif user_choice == "7":
-            print(
-                """
-            7. REGULAMIN USŁUGI I OPCJE PŁATNOŚCI
-            nie mamy jeszcze regulaminu i opcji płatności, ale stworzymy tekst i wrzucimy
-                  """
-            )
+            with open("regulamin_opcje_platnosci.json", "r") as file:
+                offer = json.load(file)
+                for key, value in offer.items():
+                    print(value)
+            print(input("POWRÓT DO MENU KLIENTA - NACIŚNIJ ENTER"))
         elif user_choice == "8":
             print("8. WYJŚCIE Z APLIKACJI")
         else:
@@ -70,30 +57,29 @@ def customer_board():
 
 def admin_board():
     user_choice = ""
-    desk_manager = DeskManager()
 
-    while user_choice != "8":
+    while user_choice != "5":
         print_menu_admin()
-        user_choice = input("Wybierz opcję wybierając odpowiednią cyfrę:")
+        user_choice = input("Wybierz opcję wybierając odpowiednią cyfrę: ")
 
         if user_choice == "1":
             print("1. LISTA REZERWACJI I DANE SUMARYCZNE")
-            desk_manager.show_all_desks()
 
         elif user_choice == "2":
             print("2. DODWANIE BIURKA/STANOWISKA")
+            desk_manager = DeskAdder()
             desk_manager.add_desk()
+
+        elif user_choice == "3":
+            print("3. USUWANIE BIURKA/STANOWISKA")
+            desk_deleter = DeskDeleter()
+            desk_deleter.delete_desk()
 
         elif user_choice == "4":
             print("4. ANULOWANIE REZERWACJI")
-        elif user_choice == "5":
-            print("5. EDYCJA REGULAMINU USŁUG")
-        elif user_choice == "6":
-            print("6. EDYCJA DANYCH KONTAKTOWYCH")
-        elif user_choice == "7":
-            print("7. ZAPISZ ZMIANY")
+            ReservationCanceler.cancel_reservation()
 
-        elif user_choice != "8":
+        elif user_choice != "5":
             print(f"Przepraszam, wybrałeś {user_choice}, nie jest to poprawny wybór")
 
 
@@ -113,17 +99,14 @@ def print_menu_admin():
     print("2. DODWANIE BIURKA/STANOWISKA")
     print("3. USUWANIE BIURKA/STANOWISKA")
     print("4. ANULOWANIE REZERWACJI")
-    print("5. EDYCJA REGULAMINU USŁUG")
-    print("6. EDYCJA DANYCH KONTAKTOWYCH")
-    print("7. ZAPISZ ZMIANY")
-    print("8. WYJŚCIE Z APLIKACJI")
+    print("5. WYJŚCIE Z APLIKACJI")
 
 
 def main_menu():
     user_choice = ""
 
     while user_choice != "3":
-        print("1. Zaloguj się jako klienta")
+        print("1. Zaloguj się jako klient")
         print("2. Zaloguj się jako administratora ")
         print("3. WYJŚCIE Z APLIKACJI")
         user_choice = input("Wybierz panel do którego chcesz się zalogować: ")
