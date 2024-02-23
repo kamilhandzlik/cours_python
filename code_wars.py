@@ -3192,15 +3192,19 @@ def divisors(n):
 #####################################################################################
 ###############   ZADANIE 86      ###################################################
 #####################################################################################
-"""The Western Suburbs Croquet Club has two categories of membership, Senior and Open. They would like your help with an application form that will tell prospective members which category they will be placed.
+"""The Western Suburbs Croquet Club has two categories of membership, Senior and Open. 
+They would like your help with an application form that will tell prospective members which category they will be placed.
 
-To be a senior, a member must be at least 55 years old and have a handicap greater than 7. In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
+To be a senior, a member must be at least 55 years old and have a handicap greater than 7.
+ In this croquet club, handicaps range from -2 to +26; the better the player the lower the handicap.
 
 Input
-Input will consist of a list of pairs. Each pair contains information for a single potential member. Information consists of an integer for the person's age and an integer for the person's handicap.
+Input will consist of a list of pairs. Each pair contains information for a single potential member.
+ Information consists of an integer for the person's age and an integer for the person's handicap.
 
 Output
-Output will consist of a list of string values (in Haskell and C: Open or Senior) stating whether the respective member is to be placed in the senior or open category.
+Output will consist of a list of string values (in Haskell and C: Open or Senior) stating whether the
+ respective member is to be placed in the senior or open category.
 
 Example
 input =  [[18, 20], [45, 2], [61, 12], [37, 6], [21, 21], [78, 9]]
@@ -3229,18 +3233,146 @@ def open_or_senior(data):
 #####################################################################################
 ###############   ZADANIE 87      ###################################################
 #####################################################################################
+"""Write a function that takes an array of numbers (integers for the tests) and a target number.
+ It should find two different items in the array that, when added together, give the target value.
+   The indices of these items should then be returned in a tuple / list (depending on your language) like so: (index1, index2).
+
+For the purposes of this kata, some tests may have multiple answers; any valid solutions will be accepted.
+
+The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be numbers; target will always be
+ the sum of two different items from that array)."""
+
+
+# Rozwiązanie - This was a hard one
+def two_sum(nums, target):
+    num_dict = {}  # Create a dictionary to store the numbers and their indices
+
+    for i, num in enumerate(nums):
+        complement = target - num
+
+        if complement in num_dict:
+            # Found a pair that sums up to the target
+            return (num_dict[complement], i)
+
+        # Store the current number and its index in the dictionary
+        num_dict[num] = i
+
+    # If no solution is found, return an empty tuple or handle it as needed
+    return ()
 
 
 #####################################################################################
 ###############   ZADANIE 88      ###################################################
 #####################################################################################
+"""Well met with Fibonacci bigger brother, AKA Tribonacci.
+
+As the name may already reveal, it works basically like a Fibonacci, but summing the last 3 (instead of 2)
+ numbers of the sequence to generate the next. And, worse part of it, regrettably I won't get to hear non-native Italian speakers trying to pronounce it :(
+
+So, if we are to start our Tribonacci sequence with [1, 1, 1] as a starting input (AKA signature), we have this sequence:
+
+[1, 1 ,1, 3, 5, 9, 17, 31, ...]
+But what if we started with [0, 0, 1] as a signature? As starting with [0, 1] instead of [1, 1] basically shifts the common
+ Fibonacci sequence by once place, you may be tempted to think that we would get the same sequence shifted by 2 places, but that is not the case and we would get:
+
+[0, 0, 1, 1, 2, 4, 7, 13, 24, ...]
+Well, you may have guessed it by now, but to be clear: you need to create a fibonacci function that given a signature array/list,
+ returns the first n elements - signature included of the so seeded sequence.
+
+Signature will always contain 3 numbers; n will always be a non-negative number; if n == 0, then return an empty array (except in C return NULL)
+ and be ready for anything else which is not clearly specified ;)
+
+If you enjoyed this kata more advanced and generalized version of it can be found in the Xbonacci kata
+
+[Personal thanks to Professor Jim Fowler on Coursera for his awesome classes that I really recommend to any math enthusiast and for showing me
+ this mathematical curiosity too with his usual contagious passion :)]"""
+
+
+# Rozwiązanie
+def tribonacci(signature, n):
+    tribonacci = []
+
+    if n == 0:
+        return tribonacci
+
+    tribonacci.extend(signature[: min(n, 3)])
+
+    while len(tribonacci) < n:
+        next_num = sum(tribonacci[-3:])
+        tribonacci.append(next_num)
+
+    return tribonacci[:n]
 
 
 #####################################################################################
 ###############   ZADANIE 89      ###################################################
 #####################################################################################
+"""Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char.
+
+Examples input/output:
+
+XO("ooxx") => true
+XO("xooxx") => false
+XO("ooxXm") => true
+XO("zpzpzpp") => true // when no 'x' and 'o' is present should return true
+XO("zzoo") => false"""
+
+
+# Rozwiązanie 1
+def xo(s):
+    a = s.count("o")
+    b = s.count("O")
+    c = s.count("x")
+    d = s.count("X")
+    e = a + b
+    f = c + d
+    if e == f:
+        return True
+    else:
+        return False
+
+
+# Rozwiązanie 2
+def xo(s):
+    a = s.count("o")
+    b = s.count("O")
+    c = s.count("x")
+    d = s.count("X")
+    e = a + b
+    f = c + d
+    return True if e is f else False
+
+
+# Rozwiązanie 3
+def xo(s):
+    return s.lower().count("o") == s.lower().count("x")
 
 
 #####################################################################################
 ###############   ZADANIE 90      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 91      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 92      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 93      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 94      ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 95      ###################################################
 #####################################################################################
