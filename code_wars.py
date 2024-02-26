@@ -3351,11 +3351,95 @@ def xo(s):
 #####################################################################################
 ###############   ZADANIE 90      ###################################################
 #####################################################################################
+"""Given two integers a and b, which can be positive or negative, find the sum of all the integers between and including them and return it.
+ If the two numbers are equal return a or b.
+
+Note: a and b are not ordered!
+
+Examples (a, b) --> output (explanation)
+(1, 0) --> 1 (1 + 0 = 1)
+(1, 2) --> 3 (1 + 2 = 3)
+(0, 1) --> 1 (0 + 1 = 1)
+(1, 1) --> 1 (1 since both are same)
+(-1, 0) --> -1 (-1 + 0 = -1)
+(-1, 2) --> 2 (-1 + 0 + 1 + 2 = 2)"""
+
+
+# Rozwiązanie
+def get_sum(a, b):
+    if a == b:
+        return a
+    elif a < b:
+        result = sum(range(a, b + 1))
+        return result
+    else:  # a > b
+        result = sum(range(b, a + 1))
+        return result
 
 
 #####################################################################################
 ###############   ZADANIE 91      ###################################################
 #####################################################################################
+"""Kata Task
+I have a cat and a dog.
+
+I got them at the same time as kitten/puppy. That was humanYears years ago.
+
+Return their respective ages now as [humanYears,catYears,dogYears]
+
+NOTES:
+
+humanYears >= 1
+humanYears are whole numbers only
+Cat Years
+15 cat years for first year
++9 cat years for second year
++4 cat years for each year after that
+Dog Years
+15 dog years for first year
++9 dog years for second year
++5 dog years for each year after that"""
+
+
+# Rozwiązanie
+def cat_years(human_years):
+    catyears = 0
+    for i in range(1, human_years + 1):
+        if i == 1:
+            catyears += 15
+        elif i == 2:
+            catyears += 9
+        else:
+            catyears += 4
+    return catyears
+
+
+def dog_years(human_years):
+    dogyears = 0
+    for j in range(1, human_years + 1):
+        if j == 1:
+            dogyears += 15
+        elif j == 2:
+            dogyears += 9
+        else:
+            dogyears += 5
+
+    return dogyears
+
+
+def human_years_cat_years_dog_years(human_years):
+    cat_years_result = cat_years(human_years)
+    dog_years_result = dog_years(human_years)
+    return [human_years, cat_years_result, dog_years_result]
+
+
+# Bonus znalazłem takie rozwiązanie jakim cudem to działa nie wiem ale jest do przeanalizowania na potem
+def human_years_cat_years_dog_years(x):
+    return [
+        x,
+        24 + (x - 2) * 4 if (x != 1) else 15,
+        24 + (x - 2) * 5 if (x != 1) else 15,
+    ]
 
 
 #####################################################################################
