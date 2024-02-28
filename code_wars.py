@@ -3525,11 +3525,45 @@ def no_space(x):
 #####################################################################################
 ###############   ZADANIE 95      ###################################################
 #####################################################################################
+"""Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+
+Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+
+If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+
+Examples
+"is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+"4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
+""  -->  """
+
+
+def order(sentence):
+    if not sentence:
+        return ""
+    words = sentence.split()
+    sorted_words = sorted(words, key=lambda w: int(next(c for c in w if c.isdigit())))
+    result = " ".join(sorted_words)
+
+    return result
 
 
 #####################################################################################
 ###############   ZADANIE 96      ###################################################
 #####################################################################################
+"""The cockroach is one of the fastest insects. Write a function which takes its speed in km per hour and returns it in cm per second, rounded down to the integer (= floored).
+
+For example:
+
+1.08 --> 30
+Note! The input is a Real number (actual type is language dependent) and is >= 0. The result should be an Integer."""
+
+import math
+
+
+def cockroach_speed(s):
+    ms = s * 100000 / 3600
+    result = math.floor(ms)
+    return result
 
 
 #####################################################################################
