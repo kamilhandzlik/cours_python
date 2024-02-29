@@ -3569,18 +3569,115 @@ def cockroach_speed(s):
 #####################################################################################
 ###############   ZADANIE 97      ###################################################
 #####################################################################################
+"""Your start-up's BA has told marketing that your website has a large audience in Scandinavia and surrounding countries.
+ Marketing thinks it would be great to welcome visitors to the site in their own language. Luckily you already use an API that detects the user's location, so this is an easy win.
+
+The Task
+Think of a way to store the languages as a database. The languages are listed below so you can copy and paste!
+Write a 'welcome' function that takes a parameter 'language', with a type String, and returns a greeting - if you have it in your database.
+ It should default to English if the language is not in the database, or in the event of an invalid input."""
+
+data_base = [
+    ("english", "Welcome"),
+    ("czech", "Vitejte"),
+    ("danish", "Velkomst"),
+    ("dutch", "Welkom"),
+    ("estonian", "Tere tulemast"),
+    ("finnish", "Tervetuloa"),
+    ("flemish", "Welgekomen"),
+    ("french", "Bienvenue"),
+    ("german", "Willkommen"),
+    ("irish", "Failte"),
+    ("italian", "Benvenuto"),
+    ("latvian", "Gaidits"),
+    ("lithuanian", "Laukiamas"),
+    ("polish", "Witamy"),
+    ("spanish", "Bienvenido"),
+    ("swedish", "Valkommen"),
+    ("welsh", "Croeso"),
+]
+
+
+# Rozwiązanie 1
+def greet(language):
+    for lang, greeting in data_base:
+        if language == lang:
+            return greeting
+
+    return "Welcome"
+
+
+# Rozwiąaanie 2
+db = {
+    "english": "Welcome",
+    "czech": "Vitejte",
+    "danish": "Velkomst",
+    "dutch": "Welkom",
+    "estonian": "Tere tulemast",
+    "finnish": "Tervetuloa",
+    "flemish": "Welgekomen",
+    "french": "Bienvenue",
+    "german": "Willkommen",
+    "irish": "Failte",
+    "italian": "Benvenuto",
+    "latvian": "Gaidits",
+    "lithuanian": "Laukiamas",
+    "polish": "Witamy",
+    "spanish": "Bienvenido",
+    "swedish": "Valkommen",
+    "welsh": "Croeso",
+}
+
+
+def greet(language):
+    return db.get(language, "Welcome")
 
 
 #####################################################################################
 ###############   ZADANIE 98      ###################################################
 #####################################################################################
+"""You're writing code to control your town's traffic lights. You need a function to handle each change from green, to yellow, to red, and then to green again.
+
+Complete the function that takes a string as an argument representing the current state of the light and returns a string representing the state the light should change to.
+
+For example, when the input is green, output should be yellow."""
+
+
+# Rozwiązanie - 1
+def update_light(current):
+    if current == "green":
+        return "yellow"
+    elif current == "yellow":
+        return "red"
+    elif current == "red":
+        return "green"
+
+
+# Rozwiązanie 2
+def update_light(current):
+    return {"green": "yellow", "yellow": "red", "red": "green"}.get(current, None)
 
 
 #####################################################################################
 ###############   ZADANIE 99      ###################################################
 #####################################################################################
+"""Implement a function that adds two numbers together and returns their sum in binary. The conversion can be done before, or after the addition.
+
+The binary number returned should be a string.
+
+Examples:(Input1, Input2 --> Output (explanation)))
+
+1, 1 --> "10" (1 + 1 = 2 in decimal or 10 in binary)
+5, 9 --> "1110" (5 + 9 = 14 in decimal or 1110 in binary)
+"""
 
 
+def add_binary(a, b):
+    result = bin(a + b)[2:]
+    return result
+
+
+print(add_binary(2, 2))
 #####################################################################################
 ###############   ZADANIE 100     ###################################################
 #####################################################################################
