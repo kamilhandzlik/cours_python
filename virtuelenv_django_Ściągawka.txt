@@ -1,0 +1,107 @@
+##############################################################
+#######    Tworzenie środowiska wirtualnego:   ###############
+##############################################################
+
+
+1. Komenda 1
+    ...
+    python3 -m virtualenv "nazwa środowiska np: venv"
+    ...
+    Pełna komenda:
+
+    python3 -m virtualenv venv
+    ...
+    albo
+    ...
+    python3 -m venv venv
+
+2.  Komenda 2 (dla systemów Linux i Windows)
+    ...
+    source venv/bin/activate            #dla linuxa
+    source venv/Scripts/activate        #dla Windowsa
+
+    alternatywnie:
+
+    . venv/bin/activate                 #dla linuxa
+    . venv/Scripts/activate             #dla Windowsa
+    ...
+
+
+
+##############################################################
+#######    Tworzenie środowiska wirtualnego:   ###############
+##############################################################
+
+
+3. Komenda 3 
+    ...
+    pip install django
+    ...
+    albo
+    ...
+    pip install -r requirements.txt
+    ...
+
+4. Komenda 4
+    ...
+    django-admin startproject "nazwa projektu"
+    ...
+
+Sprawdzenie czy działa
+5. Komenda 5
+    ...
+    cd nazwa projektu
+    ...
+
+6. Komenda 6
+    ...
+    python manage.py runserver
+    ...
+    Następnie przejdź do adresu URL w przeglądarce.
+    ...
+
+Tworzenie aplikacji
+7. Komenda 7
+    ...
+    django-admin startapp "nazwa aplikacja"
+    ...
+
+Sprawdzenie czy działa
+8. Komenda 8
+    ...
+    cd nazwa aplikacji
+    ...
+
+9. Komenda 9
+    ...
+    python manage.py runserver
+    ...
+    Następnie ponownie przejdź do adresu URL w przeglądarce.
+
+
+##############################################################
+#######           Migracje                     ###############
+##############################################################
+
+1. Komenda 1
+    ...
+    Zobaczenie ile jest migracji
+    python manage.py showmogrations
+    ...
+
+2. Komenda 2:
+    Przygotowanie migracji - ważny punkt:
+    Jeśli nie wykonasz tej komendy przed `python manage.py migrate`, twoja aplikacja może się niepoprawnie podnieść.
+    ```
+    python manage.py makemigrations
+    ```
+
+3. Komenda 3:
+    ```
+    python manage.py migrate
+    ```
+
+4. Komenda 4:
+    ```
+    python manage.py showmigrations
+    ```
