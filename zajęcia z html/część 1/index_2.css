@@ -1,0 +1,44 @@
+/* Tworzyny motyw wspólny dla naszych divów */
+div{
+    height: 50px;
+    width: 50px;
+    background-color: green;
+    border: 1px solid black;
+    margin-bottom: 5px;
+}
+
+/* tutaj pokazujemy sobie gdzie jest nasze body */
+body{
+    border: 1px solid red;
+}
+
+/* umieszczanie elementów na różnych częściach strony */
+#id2 {
+    position: absolute;
+    top: 90%; /* możemy podawać pozycję zarówno przez % odległości od strony albo przez podanie pikseli "px"*/
+    left: 250px;
+}
+
+#yellow-recntangle{
+    position: relative;
+    background-color: yellow;
+    height: 50px;
+    width: 50px;
+}
+
+#blue-rectangle {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    border-radius: 50%;
+    background-color: black;
+    height: 20px;
+    width:  20px;
+}
+
+#zrenica {
+    background: radial-gradient(circle, black 10%, white 10%);
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}

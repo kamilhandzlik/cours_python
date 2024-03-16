@@ -1,0 +1,13 @@
+.square {
+    display: inline-block; /* Poprawiono display */
+    width: calc(25% - 2px); /* Poprawiono szerokość kwadratu, odejmując margines */
+    height: calc(25vw - 2px); /* Poprawiono wysokość kwadratu, odejmując margines */
+    background-color: blue;
+    margin: 1px; /* Dodano margines */
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Dodano flex-wrap */
+    margin-bottom: 2px; /* Dodano margines między wrapperami */
+}
