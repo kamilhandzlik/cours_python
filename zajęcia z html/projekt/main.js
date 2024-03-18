@@ -29,7 +29,7 @@ const handleOnMove = e => {
     const percentage = (mouseDelta / maxDelta) * -100;
     // Obliczenie nowego procentowego przesunięcia obrazu
     const nextPercentageUnconstrained = parseFloat(track.dataset.prevPercentage) + percentage;
-    const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -100);
+    const nextPercentage = Math.max(Math.min(nextPercentageUnconstrained, 0), -50);
 
     // Zapisanie nowego procentowego przesunięcia obrazu
     track.dataset.percentage = nextPercentage;
