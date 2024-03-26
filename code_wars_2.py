@@ -185,6 +185,8 @@ gimme([5, 10, 14]) => 1
 10 is the number that fits between 5 and 14 and the index of 10 in the input array is 1.
 
 """
+
+
 # Rozwiązanie
 def gimme(input_array):
     middle_value = sorted(input_array)[1]
@@ -195,4 +197,130 @@ def gimme(input_array):
 
 #####################################################################################
 ###############   ZADANIE 106     ###################################################
+#####################################################################################
+"""Can you find the needle in the haystack?
+
+Write a function findNeedle() that takes an array full of junk but containing one "needle"
+
+After your function finds the needle it should return a message (as a string) that says:
+
+"found the needle at position " plus the index it found the needle, so:
+
+Example(Input --> Output)
+
+["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"] --> "found the needle at position 5" 
+Note: In COBOL, it should return "found the needle at position 6"
+
+"""
+
+
+def find_needle(haystack):
+    try:
+        needle_index = haystack.index("needle")
+        return f"found the needle at position {needle_index}"
+    except ValueError:
+        return "needle not found in haystack"
+
+
+#####################################################################################
+###############   ZADANIE 107     ###################################################
+#####################################################################################
+"""Write a function that takes a list of strings as an argument and returns a filtered list containing the same elements but with the 'geese' removed.
+
+The geese are any strings in the following array, which is pre-populated in your solution:
+
+  ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+For example, if this array were passed as an argument:
+
+ ["Mallard", "Hook Bill", "African", "Crested", "Pilgrim", "Toulouse", "Blue Swedish"]
+Your function would return the following array:
+
+["Mallard", "Hook Bill", "Crested", "Blue Swedish"]
+The elements in the returned array should be in the same order as in the initial array passed to your function, albeit with the 'geese' removed.
+ Note that all of the strings will be in the same case as those provided, and some elements may be repeated."""
+
+geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"]
+
+
+def goose_filter(birds):
+    geese_check = []
+    for element in birds:
+        if element not in geese:
+            geese_check.append(element)
+
+    return geese_check
+
+
+#####################################################################################
+###############   ZADANIE 108     ###################################################
+#####################################################################################
+"""When provided with a number between 0-9, return it in words.
+
+Input :: 1
+
+Output :: "One".
+
+If your language supports it, try using a switch statement."""
+
+
+# Rozwiązanie 1
+def switch_it_up(number):
+    variables = {
+        "zero": 0,
+        "one": 1,
+        "two": 2,
+        "three": 3,
+        "four": 4,
+        "five": 5,
+        "six": 6,
+        "seven": 7,
+        "eight": 8,
+        "nine": 9,
+    }
+    for name, num in variables.items():
+        if number < 0 and number * (-1) == num:
+            return f"minus {name.capitalize()}"
+        elif number == num:
+            return name.capitalize()
+
+
+# rozwiązanie 2
+def switch_it_up(number):
+    number_converter = {
+        0: "Zero",
+        1: "One",
+        2: "Two",
+        3: "Three",
+        4: "Four",
+        5: "Five",
+        6: "Six",
+        7: "Seven",
+        8: "Eight",
+        9: "Nine",
+    }
+    return number_converter[number]
+
+
+#####################################################################################
+###############   ZADANIE 109     ###################################################
+#####################################################################################
+
+#####################################################################################
+###############   ZADANIE 110     ###################################################
+#####################################################################################
+
+#####################################################################################
+###############   ZADANIE 111     ###################################################
+#####################################################################################
+
+#####################################################################################
+###############   ZADANIE 112     ###################################################
+#####################################################################################
+
+#####################################################################################
+###############   ZADANIE 113     ###################################################
+#####################################################################################
+
+#####################################################################################
+###############   ZADANIE 114     ###################################################
 #####################################################################################
