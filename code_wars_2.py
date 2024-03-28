@@ -338,19 +338,132 @@ def sequence_sum(begin_number, end_number, step):
 #####################################################################################
 ###############   ZADANIE 110     ###################################################
 #####################################################################################
+"""Messi goals function
+Messi is a soccer player with goals in three leagues:
+
+LaLiga
+Copa del Rey
+Champions
+Complete the function to return his total number of goals in all three leagues.
+
+Note: the input will always be valid.
+
+For example:
+
+5, 10, 2  -->  17"""
+
+
+def goals(laLiga, copaDelRey, championsLeague):
+    return laLiga + copaDelRey + championsLeague
+
 
 #####################################################################################
 ###############   ZADANIE 111     ###################################################
 #####################################################################################
+"""Debugging sayHello function
+The starship Enterprise has run into some problem when creating a program to greet everyone as they come aboard. It is your job to fix the code and get the program working again!
+
+Example output:
+
+Hello, Mr. Spock"""
+
+
+def say_hello(name):
+    return f"Hello, {name}"
+
 
 #####################################################################################
 ###############   ZADANIE 112     ###################################################
 #####################################################################################
+"""Create a function that takes 2 integers in form of a string as an input, and outputs the sum (also as a string):
+
+Example: (Input1, Input2 -->Output)
+
+"4",  "5" --> "9"
+"34", "5" --> "39"
+"", "" --> "0"
+"2", "" --> "2"
+"-5", "3" --> "-2"""
+
+
+# rozwiązanie 1
+def sum_str(a, b):
+    if a == "":
+        a = "0"
+    if b == "":
+        b = "0"
+    sum = int(a) + int(b)
+    return str(sum)
+
+
+# rozwiązanie 2
+def sum_str(a, b):
+    return str(int(a or 0) + int(b or 0))
+
 
 #####################################################################################
 ###############   ZADANIE 113     ###################################################
 #####################################################################################
+"""Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:
+
+* url = "http://github.com/carbonfive/raygun" -> domain name = "github"
+* url = "http://www.zombie-bites.com"         -> domain name = "zombie-bites"
+* url = "https://www.cnet.com"                -> domain name = cnet"""
+
+
+def domain_name(url):
+    url = url.split("://")[-1]
+    url = url.split("www.")[-1]
+    domain = url.split(".")[0]
+    return domain
+
 
 #####################################################################################
 ###############   ZADANIE 114     ###################################################
+#####################################################################################
+"""Task
+Sum all the numbers of a given array ( cq. list ), except the highest and the lowest element ( by value, not by index! ).
+
+The highest or lowest element respectively is a single element at each edge, even if there are more than one with the same value.
+
+Mind the input validation.
+
+Example
+{ 6, 2, 1, 8, 10 } => 16
+{ 1, 1, 11, 2, 3 } => 6
+Input validation
+If an empty value ( null, None, Nothing etc. ) is given instead of an array, or the given array is an empty list or a list with only 1 element, return 0."""
+
+
+def sum_array(arr):
+    if arr is None or len(arr) <= 1:
+        return 0
+    arr.remove(max(arr))
+    arr.remove(min(arr))
+    return sum(arr)
+
+
+#####################################################################################
+###############   ZADANIE 115     ###################################################
+#####################################################################################
+
+#####################################################################################
+###############   ZADANIE 116     ###################################################
+#####################################################################################
+
+#####################################################################################
+###############   ZADANIE 117     ###################################################
+#####################################################################################
+
+#####################################################################################
+###############   ZADANIE 118     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 119     ###################################################
+#####################################################################################
+
+#####################################################################################
+###############   ZADANIE 120     ###################################################
 #####################################################################################
