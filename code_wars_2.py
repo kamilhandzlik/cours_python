@@ -446,23 +446,113 @@ def sum_array(arr):
 #####################################################################################
 ###############   ZADANIE 115     ###################################################
 #####################################################################################
+"""Instructions
+Write a function that takes a single non-empty string of only lowercase and uppercase ascii letters (word) as its argument, and returns an ordered list containing the indices of all capital (uppercase) letters in the string.
+
+Example (Input --> Output)
+"CodEWaRs" --> [0,3,4,6]"""
+
+
+def capitals(word):
+    idx = []
+    for i, letter in enumerate(word):
+        if letter.isupper():
+            idx.append(i)
+    return idx
+
 
 #####################################################################################
 ###############   ZADANIE 116     ###################################################
 #####################################################################################
+"""In this kata you will create a function that takes in a list and returns a list with the reverse order.
+
+Examples (Input -> Output)
+* [1, 2, 3, 4]  -> [4, 3, 2, 1]
+* [9, 2, 0, 7]  -> [7, 0, 2, 9]"""
+
+
+def reverse_list(l):
+    return l[::-1]
+
 
 #####################################################################################
 ###############   ZADANIE 117     ###################################################
 #####################################################################################
+"""Task:
+Complete function saleHotdogs/SaleHotDogs/sale_hotdogs, function accepts 1 parameter:n, n is the number of hotdogs a customer will buy, different numbers have different prices (refer to the following table), return how much money will the customer spend to buy that number of hotdogs.
+
+number of hotdogs	price per unit (cents)
+n < 5	100
+n >= 5 and n < 10	95
+n >= 10	90"""
+
+
+# Rozwiązanie 1
+def sale_hotdogs(n):
+    if n <= 0:
+        return 0
+    elif n < 5:
+        return 100 * n
+    elif n < 10:
+        return 95 * n
+    else:
+        return 90 * n
+
+
+# Rozwiązanie 2
+def sale_hotdogs(n):
+    if n <= 0:
+        return 0
+    return n * (90 if n >= 10 else (95 if n >= 5 else 100))
+
 
 #####################################################################################
 ###############   ZADANIE 118     ###################################################
 #####################################################################################
+"""You will be given an array and a limit value. You must check that all values in the array are below or equal to the limit value. If they are, return true. Else, return false.
+
+You can assume all values in the array are numbers."""
+
+
+# Rozwiązanie 1
+def small_enough(array, limit):
+    check = 0
+    for value in array:
+        if value <= limit:
+            check += 1
+        else:
+            check -= 1
+
+    if check == len(array):
+        return True
+    else:
+        return False
+
+
+# Rozwiązanie 2
+def small_enough(array, limit):
+    for value in array:
+        if value > limit:
+            return False
+    return True
+
+
+# Rozwiązanie 3
+def small_enough(array, limit):
+    return max(array) <= limit
 
 
 #####################################################################################
 ###############   ZADANIE 119     ###################################################
 #####################################################################################
+"""Given an array of integers as strings and numbers, return the sum of the array values as if all were numbers.
+
+Return your answer as a number."""
+
+
+def sum_mix(arr):
+    return sum(int(x) for x in arr)
+
 
 #####################################################################################
 ###############   ZADANIE 120     ###################################################
