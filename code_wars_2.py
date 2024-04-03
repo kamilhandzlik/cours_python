@@ -557,3 +557,101 @@ def sum_mix(arr):
 #####################################################################################
 ###############   ZADANIE 120     ###################################################
 #####################################################################################
+"""We need a simple function that determines if a plural is needed or not. It should take a number, and return true if a plural should be used with that number or false if not. This would be useful when printing out a string such as 5 minutes, 14 apples, or 1 sun.
+
+You only need to worry about english grammar rules for this kata, where anything that isn't singular (one of something), it is plural (not one of something).
+
+All values will be positive integers or floats, or zero."""
+
+
+# Rozwiązanie
+def plural(n):
+    return True if n > 1 or n == 0 else False
+
+
+#####################################################################################
+###############   ZADANIE 121     ###################################################
+#####################################################################################
+"""Make a function that will return a greeting statement that uses an input; your program should return, "Hello, <name> how are you doing today?".
+
+[Make sure you type the exact thing I wrote or the program may not execute properly]"""
+
+
+# Rozwiązanie
+def greet(name):
+    return f"Hello, {name} how are you doing today?"
+
+
+#####################################################################################
+###############   ZADANIE 122     ###################################################
+#####################################################################################
+"""Grade book
+Complete the function so that it finds the average of the three scores passed to it and returns the letter value associated with that grade."""
+
+
+def get_grade(s1, s2, s3):
+    score = (s1 + s2 + s3) / 3
+
+    if 0 <= score < 60:
+        return "F"
+    elif score < 70:
+        return "D"
+    elif score < 80:
+        return "C"
+    elif score < 90:
+        return "B"
+    elif score <= 100:
+        return "A"
+
+
+#####################################################################################
+###############   ZADANIE 123     ###################################################
+#####################################################################################
+"""Kids drink toddy.
+Teens drink coke.
+Young adults drink beer.
+Adults drink whisky.
+Make a function that receive age, and return what they drink.
+
+Rules:
+
+Children under 14 old.
+Teens under 18 old.
+Young under 21 old.
+Adults have 21 or more."""
+
+
+def people_with_age_drink(age):
+    if age < 14:
+        return "drink toddy"
+    elif age < 18:
+        return "drink coke"
+    elif age < 21:
+        return "drink beer"
+    elif age >= 21:
+        return "drink whisky"
+
+
+#####################################################################################
+###############   ZADANIE 124     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 125     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 126     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 127     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 128     ###################################################
+#####################################################################################
