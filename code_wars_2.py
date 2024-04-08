@@ -635,6 +635,56 @@ def people_with_age_drink(age):
 #####################################################################################
 ###############   ZADANIE 124     ###################################################
 #####################################################################################
+"""The purpose of this kata is to write a program that can do some algebra.
+
+Write a function expand that takes in an expression with a single, one character variable, and expands it. The expression is
+in the form (ax+b)^n where a and b are integers which may be positive or negative, x is any single character variable, and n is a natural number.
+If a = 1, no coefficient will be placed in front of the variable. If a = -1, a "-" will be placed in front of the variable.
+
+The expanded form should be returned as a string in the form ax^b+cx^d+ex^f... where a, c, and e are the coefficients of the term, 
+x is the original one character variable that was passed in the original expression and b, d, and f, are the powers that x is being
+raised to in each term and are in decreasing order.
+
+If the coefficient of a term is zero, the term should not be included. If the coefficient of a term is one, the coefficient should not be included.
+If the coefficient of a term is -1, only the "-" should be included. If the power of the term is 0, only the coefficient should be included.
+ If the power of the term is 1, the caret and power should be excluded."""
+
+
+# To niestety jest jeszcze do dopacowania
+def expand(expression):
+    import re
+
+    match = re.match(r"\((-?\d*)([a-zA-Z])([-+]?\d+)\)\^(\d+)", expression)
+    a = int(match.group(1)) if match.group(1) else 1
+    x = match.group(2)
+    b = int(match.group(3))
+    n = int(match.group(4))
+
+    expanded_terms = []
+    if n == 0:
+        return "1"
+    elif n == 1:
+        if b == 0:
+            return str(a) if a != 1 else x
+        else:
+            return str(a + b) + x if a + b != 1 else x
+    else:
+        for i in range(n + 1):
+            coefficient = str((b**i) * (a ** (n - i)))
+            power = str(n - i) if n - i > 1 else ""
+            if coefficient != "0":
+                if coefficient == "1" or coefficient == "-1":
+                    coefficient = "" if power != "" else coefficient
+                if coefficient != "":
+                    if coefficient == "1" and power == "":
+                        expanded_terms.append(x)
+                    elif coefficient == "-1" and power == "":
+                        expanded_terms.append("-" + x)
+                    else:
+                        expanded_terms.append(
+                            coefficient + x + ("^" + power if power != "" else "")
+                        )
+    return "+".join(expanded_terms)
 
 
 #####################################################################################
