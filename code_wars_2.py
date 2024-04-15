@@ -690,18 +690,105 @@ def expand(expression):
 #####################################################################################
 ###############   ZADANIE 125     ###################################################
 #####################################################################################
+"""A pangram is a sentence that contains every single letter of the alphabet at least once. For example, the sentence 
+"The quick brown fox jumps over the lazy dog" is a pangram, because it uses the letters A-Z at least once (case is irrelevant).
+Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation."""
+
+
+def is_pangram(s):
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    for char in alphabet:
+        if char not in s.lower():
+            return False
+
+    return True
 
 
 #####################################################################################
 ###############   ZADANIE 126     ###################################################
 #####################################################################################
+"""Your team is writing a fancy new text editor and you've been tasked with implementing the line numbering.
+
+Write a function which takes a list of strings and returns each line prepended by the correct number.
+
+The numbering starts at 1. The format is n: string. Notice the colon and space in between.
+
+Examples: (Input --> Output)
+
+[] --> []
+["a", "b", "c"] --> ["1: a", "2: b", "3: c"]"""
+
+
+# Rozwiązanie
+def number(lines):
+    numbered_lines = []
+    for i, char in enumerate(lines, start=1):
+        numbered_lines.append(f"{i}: {char}")
+
+    return numbered_lines
 
 
 #####################################################################################
 ###############   ZADANIE 127     ###################################################
 #####################################################################################
+"""Complete the function that takes two integers (a, b, where a < b) and return an array
+ of all integers between the input parameters, including them."""
+
+
+# Rozwiązanie 1
+def between(a, b):
+    array = []
+    for i in range(a, b + 1):
+        array.append(i)
+    return array
+
+
+# Rozwiązanie 2
+def between(a, b):
+    return list(range(a, b + 1))
 
 
 #####################################################################################
 ###############   ZADANIE 128     ###################################################
+#####################################################################################
+"""This time no story, no theory. The examples below show you how to write function accum:
+
+Examples:
+accum("abcd") -> "A-Bb-Ccc-Dddd"
+accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+accum("cwAt") -> "C-Ww-Aaa-Tttt"
+The parameter of accum is a string which includes only letters from a..z and A..Z."""
+
+
+# Rozwiązanie
+def accum(st):
+    accum = ""
+    for i, char in enumerate(st):
+        accum += char.upper() + char.lower() * i + "-"
+
+    return accum[:-1]
+
+
+#####################################################################################
+###############   ZADANIE 129     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 130     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 131     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 132     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 133     ###################################################
 #####################################################################################
