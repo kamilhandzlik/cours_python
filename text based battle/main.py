@@ -1,14 +1,16 @@
-from character import character
+from character import character, Player, Enemy
+from weapons import *
 
-hero = character(name="Link", health=100)
-enemy = character(name="Goblin", health=60)
+player = Player(name="Link", health=500)
+player.equip(zweihander)
+enemy = Enemy(name="Goblin", health=150, weapon=dagger)
 
 
 while True:
-    hero.attack(enemy)
-    enemy.attack(hero)
+    player.attack(enemy)
+    enemy.attack(player)
 
-    print(f"Health of {hero.name}: {hero.health}")
-    print(f"Health of {enemy.name}: {enemy.health}")
+    player.health_bar.draw()
+    enemy.health_bar.draw()
 
     input()
