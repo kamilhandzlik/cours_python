@@ -16,7 +16,7 @@ class character:
 
     def attack(self, target) -> None:
         target.health -= self.weapon.damage
-        target.health = max(target.health, 0)
+        target.health_max = max(target.health, 0)
         target.health_bar.update
         print(f"{self.name} dealt {self.weapon.damage} damage to {target.name}")
 

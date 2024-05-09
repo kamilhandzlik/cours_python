@@ -1,5 +1,7 @@
 import logging
 
+user_input = 0
+
 
 def add_num(a, b):
     return a + b
@@ -10,46 +12,47 @@ def subtract_num(a, b):
 
 
 def calculator(a, b):
-    user_input = input("Write your addition or subtraction here: ")
+    user_input = input("Write your addition or subtraction here:")
 
-    # Usuwanie białych znaków przed i po operatorze
-    user_input = user_input.replace(" ", "")
+    if not isinstance(a, (int or float)) or not isinstance(b, (int or float)):
+        if not isinstance(a, (int or float)):
+            logging.error(f"{a} is not a number")
+            raise ValueError(f"{a} is not a number")
+        elif not isinstance(b, (int or float)):
+            logging.error(f"{b} is not a number")
+            raise ValueError(f"{b} is not a number")
+
+    inputs = user_input.split()
+    a = None
+    b = None
+
+    for element in inputs:
+        try:
+            num = float(element)
+        except ValueError:
+            print(f"'{element}' nie jest liczbą. Pomijam.")
+            continue
+
+        if a is None:
+            a = num
+        else:
+            b = num
+            break
 
     if "+" in user_input:
-        operator = "+"
+        result = add_num(a, b)
+        logging.info(f"{a} + {b} = {result}")
+
     elif "-" in user_input:
-        operator = "-"
+        result = subtract_num(a, b)
+        logging.info(f"{a} - {b} = {result}")
+
     else:
         logging.error("Unknown operator")
         raise ValueError("Unknown operator")
-
-    # Rozdzielenie wejścia na liczby i operator
-    numbers = user_input.split(operator)
-
-    # Wyszukanie indeksów, na których występują liczby a i b
-    idx_a = user_input.find(numbers[0])
-    idx_b = user_input.find(numbers[1])
-
-    # Sprawdzenie, czy liczby a i b są na pozycjach 0 i 1
-    if idx_a < idx_b:
-        a = float(numbers[0])
-        b = float(numbers[1])
-    else:
-        a = float(numbers[1])
-        b = float(numbers[0])
-
-    if operator == "+":
-        result = add_num(a, b)
-        logging.info(f"{a} + {b} = {result}")
-    elif operator == "-":
-        result = subtract_num(a, b)
-        logging.info(f"{a} - {b} = {result}")
 
     return result
 
 
 if __name__ == "__main__":
-    try:
-        calculator(0, 1)
-    except ValueError as e:
-        print("Error:", e)
+    calculator(1, 2)
