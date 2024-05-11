@@ -10,7 +10,7 @@ while True:
     player.attack(enemy)
     enemy.attack(player)
 
-    player.health_bar.draw()
-    enemy.health_bar.draw()
+    player.health_bar.update()
+    enemy.health_bar.update()
 
     input()
