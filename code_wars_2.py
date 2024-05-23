@@ -817,18 +817,129 @@ def increment_string(strng):
 #####################################################################################
 ###############   ZADANIE 130     ###################################################
 #####################################################################################
+"""Create a function called shortcut to remove the lowercase vowels (a, e, i, o, u ) in a given string.
+
+Examples
+"hello"     -->  "hll"
+"codewars"  -->  "cdwrs"
+"goodbye"   -->  "gdby"
+"HELLO"     -->  "HELLO"
+don't worry about uppercase vowels
+y is not considered a vowel for this kata"""
+
+
+# Rozwiązanie 1
+def shortcut(s):
+    lower_vowel = "aeiou"
+    return "".join([char for char in s if char not in lower_vowel])
+
+
+# Rozwiązanie 2
+def shortcut(s):
+    for char in "aeiou":
+        s = s.replace(char, "")
+    return s
 
 
 #####################################################################################
 ###############   ZADANIE 131     ###################################################
 #####################################################################################
+"""Given an integer as input, can you round it to the next (meaning, "greater than or equal") multiple of 5?
+
+Examples:
+
+input:    output:
+0    ->   0
+2    ->   5
+3    ->   5
+12   ->   15
+21   ->   25
+30   ->   30
+-2   ->   0
+-5   ->   -5
+etc.
+Input may be any positive or negative integer (including 0).
+
+You can assume that all inputs are valid integers."""
+
+# Rozwiązanie 1
+import math
+
+
+def round_to_next5(n):
+    if n != range(-1000000, 1000000, 5):
+        return math.ceil(n / 5) * 5
+
+
+# Rozwiązanie 2
+import math
+
+
+def round_to_next5(n):
+    return math.ceil(n / 5) * 5
+
+
+# Rozwiązanie 3
+def round_to_next5(n):
+    return n + (5 - n) % 5
 
 
 #####################################################################################
 ###############   ZADANIE 132     ###################################################
 #####################################################################################
+"""You need to write a function that reverses the words in a given string. A word can also fit an empty string. If this is not clear enough, here are some examples:
+
+As the input may have trailing spaces, you will also need to ignore unneccesary whitespace.
+
+Example (Input --> Output)
+
+"Hello World" --> "World Hello"
+"Hi There." --> "There. Hi"
+Happy coding!"""
+# Rozwiązanie 1
+
+
+def reverse(st):
+    separated = st.split()
+
+    reversed_list = separated[::-1]
+
+    reversed_string = " ".join(reversed_list)
+
+    return reversed_string
+
+
+# Rozwiązanie 2
+def reverse(st):
+    # Your Code Here
+    return " ".join(st.split()[::-1])
 
 
 #####################################################################################
 ###############   ZADANIE 133     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 134     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 135     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 136     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 137     ###################################################
+#####################################################################################
+
+
+#####################################################################################
+###############   ZADANIE 138     ###################################################
 #####################################################################################
