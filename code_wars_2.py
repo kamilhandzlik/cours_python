@@ -918,6 +918,28 @@ def reverse(st):
 #####################################################################################
 ###############   ZADANIE 133     ###################################################
 #####################################################################################
+"""Complete the solution so that the function will break up camel casing, using a space between words.
+
+Example
+"camelCasing"  =>  "camel Casing"
+"identifier"   =>  "identifier"
+""             =>  """
+
+
+# Rozwiązanie 1
+def solution(s):
+    result = ""
+    for char in s:
+        if char.isupper():
+            result += " " + char
+        else:
+            result += char
+    return result
+
+
+# Rozwiązanie 2
+def solution(s):
+    return "".join(" " + c if c.isupper() else c for c in s)
 
 
 #####################################################################################
