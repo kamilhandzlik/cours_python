@@ -945,16 +945,129 @@ def solution(s):
 #####################################################################################
 ###############   ZADANIE 134     ###################################################
 #####################################################################################
+"""Write a function that returns a string in which firstname is swapped with last name.
+
+Example(Input --> Output)
+
+"john McClane" --> "McClane john"
+"""
+
+
+# Rozwiązanie 1
+def name_shuffler(str_):
+    new_parts = str_.split(" ")
+    new_parts_reversed = new_parts[::-1]
+    return " ".join(new_parts_reversed)
+
+
+# Rozwiązanie 2
+def name_shuffler(str_):
+    return " ".join(str_.split(" ")[::-1])
 
 
 #####################################################################################
 ###############   ZADANIE 135     ###################################################
 #####################################################################################
+"""Make a function that returns the value multiplied by 50 and increased by 6. If the value entered is a string it should return "Error".
+
+"""
+
+
+# Rozwiązanie 1
+def problem(a):
+    if isinstance(a, str):
+        return "Error"
+    else:
+        return (a * 50) + 6
+
+
+# Rozwiązanie 2
+def problem(a):
+    return "Error" if isinstance(a, str) else (a * 50) + 6
 
 
 #####################################################################################
 ###############   ZADANIE 136     ###################################################
 #####################################################################################
+"""Your task, is to create a NxN spiral with a given size.
+
+For example, spiral with size 5 should look like this:
+
+00000
+....0
+000.0
+0...0
+00000
+and with the size 10:
+
+0000000000
+.........0
+00000000.0
+0......0.0
+0.0000.0.0
+0.0..0.0.0
+0.0....0.0
+0.000000.0
+0........0
+0000000000
+Return value should contain array of arrays, of 0 and 1, with the first row being composed of 1s. For example for given size 5 result should be:
+
+[[1,1,1,1,1],[0,0,0,0,1],[1,1,1,0,1],[1,0,0,0,1],[1,1,1,1,1]]
+Because of the edge-cases for tiny spirals, the size will be at least 5.
+
+General rule-of-a-thumb is, that the snake made with '1' cannot touch to itself."""
+
+
+def spiralize(size):
+    # Initialize the NxN array with zeros
+    spiral = [[0 for _ in range(size)] for _ in range(size)]
+
+    # Define the initial direction (right)
+    direction = "right"
+
+    # Start position
+    x, y = 0, 0
+
+    # Boundaries for the spiral
+    left_bound, right_bound = 0, size - 1
+    top_bound, bottom_bound = 0, size - 1
+
+    # Fill the array in the spiral pattern
+    while left_bound <= right_bound and top_bound <= bottom_bound:
+        if direction == "right":
+            for y in range(left_bound, right_bound + 1):
+                spiral[top_bound][y] = 1
+            top_bound += 1
+            direction == "down"
+        elif direction == "down":
+            for x in range(top_bound, bottom_bound + 1):
+                spiral[x][right_bound] = 1
+            right_bound -= 1
+            direction == "left"
+        elif direction == "left":
+            for y in range(right_bound, left_bound - 1, -1):
+                spiral[bottom_bound][y] = 1
+            bottom_bound -= 1
+            direction == "up"
+        elif direction == "up":
+            for y in range(bottom_bound, top_bound - 1, -1):
+                spiral[x][left_bound] = 1
+            left_bound += 1
+            direction == "right"
+
+        return spiral
+
+
+# Przykłady
+spiral_5 = spiralize(5)
+spiral_10 = spiralize(10)
+
+# printowanie w konsoli
+for row in spiral_5:
+    print(row)
+
+for row in spiral_10:
+    print(row)
 
 
 #####################################################################################
