@@ -1017,56 +1017,87 @@ Because of the edge-cases for tiny spirals, the size will be at least 5.
 
 General rule-of-a-thumb is, that the snake made with '1' cannot touch to itself."""
 
+# version 1 - Failure
+# def spiralize(size):
+# Initialize the NxN array with zeros
+# spiral = [[0 for _ in range(size)] for _ in range(size)]
+
+# Define the initial direction (right)
+# direction = "right"
+
+# Start position
+# x, y = 0, 0
+
+# Boundaries for the spiral
+# left_bound, right_bound = 0, size - 1
+# top_bound, bottom_bound = 0, size - 1
+
+# Fill the array in the spiral pattern
+# while left_bound <= right_bound and top_bound <= bottom_bound:
+# if direction == "right":
+# for y in range(left_bound, right_bound + 1):
+# spiral[top_bound][y] = 1
+# top_bound += 1
+# direction == "down"
+# elif direction == "down":
+# for x in range(top_bound, bottom_bound + 1):
+# spiral[x][right_bound] = 1
+# right_bound -= 1
+# direction == "left"
+# elif direction == "left":
+# for y in range(right_bound, left_bound - 1, -1):
+# spiral[bottom_bound][y] = 1
+# bottom_bound -= 1
+# direction == "up"
+# elif direction == "up":
+# for y in range(bottom_bound, top_bound - 1, -1):
+# spiral[x][left_bound] = 1
+# left_bound += 1
+# direction == "right"
+
+# return spiral
+
 
 def spiralize(size):
-    # Initialize the NxN array with zeros
     spiral = [[0 for _ in range(size)] for _ in range(size)]
 
-    # Define the initial direction (right)
-    direction = "right"
+    x, y = 0, 0  # Pozycja początkowa
+    direction = 0  # początkowy kierunek: prawo
+    dx, dy = [0, 1, 0, -1], [1, 0, -1, 0]
 
-    # Start position
-    x, y = 0, 0
+    while True:
+        spiral[x][y] = 1
+        nx, ny = x + dx[direction], y + dy[direction]
 
-    # Boundaries for the spiral
-    left_bound, right_bound = 0, size - 1
-    top_bound, bottom_bound = 0, size - 1
+        # Sprawdzamy czy następny krok jest w granicy i jest pusty
+        if 0 <= nx < size and 0 <= ny < size and spiral[nx][ny] == 0:
+            # Sprawdzamy czy następny krok po następnym kroku też jest w granicach i jest pusty
+            nnx, nny = nx + dx[direction], ny + dy[direction]
+            if 0 <= nnx < size and 0 <= nny < size and spiral[nnx][nny] == 0:
+                x, y = nx, ny
+            else:
+                direction = (direction + 1) % 4
+                x, y = x + dx[direction], y + dy[direction]
+        else:
+            direction = (direction + 1) % 4
+            x, y = x + dx[direction], y + dy[direction]
 
-    # Fill the array in the spiral pattern
-    while left_bound <= right_bound and top_bound <= bottom_bound:
-        if direction == "right":
-            for y in range(left_bound, right_bound + 1):
-                spiral[top_bound][y] = 1
-            top_bound += 1
-            direction == "down"
-        elif direction == "down":
-            for x in range(top_bound, bottom_bound + 1):
-                spiral[x][right_bound] = 1
-            right_bound -= 1
-            direction == "left"
-        elif direction == "left":
-            for y in range(right_bound, left_bound - 1, -1):
-                spiral[bottom_bound][y] = 1
-            bottom_bound -= 1
-            direction == "up"
-        elif direction == "up":
-            for y in range(bottom_bound, top_bound - 1, -1):
-                spiral[x][left_bound] = 1
-            left_bound += 1
-            direction == "right"
+        # Sprawdzamy, czy w następnym ruchu można wprowadzić wartość 1
+        if not (0 <= x < size and 0 <= y < size and spiral[x][y] == 0):
+            break
 
-        return spiral
+    return spiral
 
 
-# Przykłady
+# Przykładowe użycie:
 spiral_5 = spiralize(5)
-spiral_10 = spiralize(10)
+spiral_8 = spiralize(8)
 
-# printowanie w konsoli
+# Wyświetlanie wyników
 for row in spiral_5:
     print(row)
 
-for row in spiral_10:
+for row in spiral_8:
     print(row)
 
 
